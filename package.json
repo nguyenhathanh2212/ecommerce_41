@@ -20,6 +20,11 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "font-awesome": "^4.7.0"
+        "animate.css": "^3.6.1",
+        "bootstrap-sass": "^3.3.7",
+        "bxslider": "^4.2.13",
+        "flexslider": "^2.7.0",
+        "font-awesome": "^4.7.0",
+        "jquery-ui": "github:jquery/jquery-ui"
     }
 }
