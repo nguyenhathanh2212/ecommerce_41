@@ -15,4 +15,9 @@ class Option extends Model
     {
         return $this->belongsToMany(Product::class)->withPivot('quanlity', 'price')->withTimestamps();
     }
+    
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
 }

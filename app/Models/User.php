@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Hash;
 
 class User extends Authenticatable
 {
@@ -38,9 +39,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
     
     public function products()
     {
         return $this->belongsToMany(Product::class, 'reviews', 'user_id', 'product_id')->withPivot('content', 'rate')->withTimestamps();
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = Hash::make($value);
     }
 }
