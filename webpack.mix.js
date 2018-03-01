@@ -14,4 +14,5 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
 
-mix.copyDirectory('resources/assets/templates/ecommerce/images/', 'public/templates/ecommerce/images/')
+mix.copyDirectory('resources/assets/templates/ecommerce/', 'public/templates/ecommerce/')
+mix.copyDirectory('resources/assets/templates/admin/', 'public/templates/admin/')

@@ -39,4 +39,12 @@ return [
     'vietnamese' => 'Vietnamese',
     'categories' => 'Categories',
     'bestSeller' => 'Best Seller',
+    'manage' => 'Manage',
+    'admin' => 'Admin',
+    'notice_404' => '<b>Oops... Page Not Found!</b> <em>Sorry the Page Could not be Found here.</em>',
+    'notice_404_2' => 'Try using the button below to go to main page of the site',
+    'gotoBack' => '&nbsp; Go to Back',
+    'enterYourEmail' => 'Enter Your Email',
+    '404Error' => '404 Error ',
+    'goToHomePage' => 'Go to Home Page',
 ];
