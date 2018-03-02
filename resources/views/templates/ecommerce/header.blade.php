@@ -30,6 +30,7 @@
         {{ Html::style(asset('templates/ecommerce/css/revolution-slider.css')) }}
         <!-- style CSS -->
         {{ Html::style(asset('templates/ecommerce/css/style.css')) }}
+        {{ Html::style(asset('templates/ecommerce/css/mystyle.css')) }}
     </head>
 
     <body class="cms-index-index cms-home-page">
@@ -52,9 +53,18 @@
                             <!-- top links -->
                             <div class="headerlinkmenu col-lg-8 col-md-7 col-sm-8 col-xs-12">
                                 <div class="links">
-                                    <div class="myaccount"><a title="@lang('lang.myaccount')" href=""><i class="fa fa-user"></i><span class="hidden-xs">@lang('lang.myaccount')</span></a></div>
-                                    <div class="wishlist"><a title="@lang('lang.wishlist')" href=""><i class="fa fa-heart"></i><span class="hidden-xs">@lang('lang.wishlist')</span></a></div>
-                                    <div class="login"><a href=""><i class="fa fa-unlock-alt"></i><span class="hidden-xs">@lang('login')</span></a></div>
+                                    @auth
+                                        <div class="myaccount"><a title="@lang('lang.myaccount')" href=""><i class="fa fa-user"></i><span class="hidden-xs">{{ Auth::user()->firstname ? Auth::user()->firstname : Auth::user()->email }}</span></a></div>
+                                        <div class="login"><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="fa fa-unlock-alt"></i><span class="hidden-xs">@lang('lang.logout')</span></a>
+                                        </div>
+                                        {!! Form::open(['route' => 'logout', 'id' => 'logout-form']) !!}
+                                        {!! Form::close() !!}
+                                    @else
+                                        <div class="login"><a href="{{ route('login') }}"><i class="fa fa-unlock-alt"></i><span class="hidden-xs">@lang('lang.login')</span></a></div>
+                                        <div class="login"><a href="{{ route('register') }}"><i class="fa fa-registered"></i><span class="hidden-xs">@lang('lang.register')</span></a></div>
+                                    @endauth
+                                    
                                 </div>
                                 <div class="language-currency-wrapper">
                                     <div class="inner-cl">

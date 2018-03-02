@@ -1,0 +1,102 @@
+.loginReg__or {
+    margin-left: -13px;display:
+    block;margin: 10px 0;
+    width: 4em;height: 2em;
+    text-align: center;
+    line-height: 2.2;background: #dcdcdc;/* border-radius: 50%; */
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.unit.or-divider {
+    margin-top: 40px;
+    display: inline-block;
+    float: left;
+    /* width: 70px; */
+}
+
+.inner {
+    padding: 58px 0 90px;
+    border-left: 1px dotted #b6b6b6;
+    margin-left: 58px;
+}
+.unit.social-column {
+    margin-top: 0;
+    height: 260px;
+    margin-left: 35px;
+    display: table;
+}
+
+.social-inner {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.fb-wrapper {
+    text-align: center;
+}
+
+a#facebook-login-button {
+    color: #3b5998;
+    border: 1px solid #3b5998;
+    font-weight: 700;
+    display: block;
+    line-height: 36px;
+    padding: 0 10px 0 0;
+    text-decoration: none;
+    cursor: pointer;
+    min-width: 120px;
+}
+
+i.icon.icon-fb-social.icon-fb-small-social {
+    margin-top: -1px;
+    margin-left: -1px;
+    background-position: -716px -151px;
+    display: inline-block;
+    vertical-align: text-top;
+    padding: 0;
+    background-image: url(../images/icons-header-7dcc3cecd4.png);
+    width: 37px;
+    height: 38px;
+    padding-left: 0;
+    float: left;
+}
+
+.google-wrapper {
+    text-align: center;
+    margin-top: 20px;
+}
+
+a#google-login-button {
+    color: #ea4335;
+    border: 1px solid #ea4335;
+    font-weight: 700;
+    display: block;
+    line-height: 36px;
+    padding: 0 10px 0 0;
+    text-decoration: none;
+    cursor: pointer;
+    min-width: 120px;
+}
+
+i.icon.icon-google-social.icon-google-small-social {
+    margin-top: -1px;
+    background-position: -716px -190px;
+    margin-left: -1px;
+    display: inline-block;
+    vertical-align: text-top;
+    padding: 0;
+    background-image: url(../images/icons-header-7dcc3cecd4.png);
+    width: 37px;
+    height: 38px;
+    padding-left: 0;
+    float: left;
+}
+.box-authentication.form-log {
+    padding-left:  50px !important;
+}
+
+.form-input {
+    width: 80% !important;
+}
