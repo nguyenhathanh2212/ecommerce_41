@@ -77,9 +77,11 @@ $factory->define(App\Models\Product::class, function (Faker $faker) {
         'category_id' => App\Models\Category::where('parent_id', '<>', 0)->get()->random()->id,
         'user_id' => 1,
         'name' => implode(' ', $faker->words(2)),
-        'description' => $faker->text,
+        'preview' => $faker->text(rand(200, 400)),
+        'description' => $faker->text(rand(1000, 2000)),
         'discount_percent' => $faker->numberBetween(1, 40),
         'quanlity' => $faker->numberBetween(0, 20),
         'status' => null,
+        'price' => rand(1,10000) * 1000,
     ];
 });

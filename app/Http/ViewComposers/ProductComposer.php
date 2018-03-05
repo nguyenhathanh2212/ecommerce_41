@@ -3,25 +3,25 @@
 namespace App\Http\ViewComposers;
 
 use Illuminate\View\View;
-use App\Repositories\Product\ProductRepositoryInterface;
+use App\Repositories\Product\ProductInterface;
 
 class ProductComposer
 {
-    protected $product;
+    protected $productRepository;
 
-    public function __construct(ProductRepositoryInterface $product)
+    public function __construct(ProductInterface $productRepository)
     {
-        $this->product = $product;
+        $this->productRepository = $productRepository;
     }
 
     public function compose(View $view)
     {
-        $view->with('topSells', $this->product->getTopSells(config('setting.topSell')));
-        $view->with('features', $this->product->getFeatures(config('setting.topSell')));
-        $view->with('hotDeal', $this->product->getHotDeal());
-        $view->with('topBanners', $this->product->random(config('setting.banner')));
-        $view->with('topRates', $this->product->getTopRates(config('setting.top')));
-        $view->with('onSales', $this->product->getOnSales(config('setting.top')));
-        $view->with('specialProducts', $this->product->getSpecials(config('setting.topSell')));
+        $view->with('topSells', $this->productRepository->getTopSells(config('setting.topSell')));
+        $view->with('features', $this->productRepository->getFeatures(config('setting.topSell')));
+        $view->with('hotDeal', $this->productRepository->getHotDeal());
+        $view->with('topBanners', $this->productRepository->random(config('setting.banner')));
+        $view->with('topRates', $this->productRepository->getTopRates(config('setting.top')));
+        $view->with('onSales', $this->productRepository->getOnSales(config('setting.top')));
+        $view->with('specialproductRepositorys', $this->productRepository->getSpecials(config('setting.topSell')));
     }
 }

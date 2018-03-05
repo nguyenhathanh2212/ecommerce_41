@@ -100,3 +100,7 @@ i.icon.icon-google-social.icon-google-small-social {
 .form-input {
     width: 80% !important;
 }
+
+.flex-control-thumbs img {
+    width: 95% !important;
+}

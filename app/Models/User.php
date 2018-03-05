@@ -35,6 +35,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $appends = ['fullname'];
+
     public function orders()
     {
         return $this->hasMany(Order::class);
@@ -47,11 +49,16 @@ class User extends Authenticatable
     
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'reviews', 'user_id', 'product_id')->withPivot('content', 'rate')->withTimestamps();
+        return $this->belongsToMany(Product::class, 'reviews', 'product_id', 'user_id')->withPivot('content', 'rate')->withTimestamps();
     }
 
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = Hash::make($value);
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->firstname . ' ' . $this->lastname;
     }
 }

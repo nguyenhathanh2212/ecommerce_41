@@ -14,3 +14,9 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::namespace('Ecommerce')->group(function () {
+    Route::resource('product', 'ProductController', [
+        'as' => 'ecommerce'
+    ]);
+});

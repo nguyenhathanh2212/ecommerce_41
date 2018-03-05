@@ -1,7 +1,7 @@
 <?php
 namespace App\Repositories\Product;
 
-interface ProductRepositoryInterface
+interface ProductInterface
 {
     public function getSlider($limit = 0);
 
