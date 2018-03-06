@@ -16,6 +16,8 @@ class Product extends Model
         'status',
     ];
 
+    protected $appends = ['rate'];
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
@@ -44,5 +46,18 @@ class Product extends Model
     public function users()
     {
         return $this->belongsToMany(User::class, 'reviews', 'user_id', 'product_id')->withPivot('content', 'rate')->withTimestamps();
+    }
+
+    public function getRateAttribute()
+    {
+        if (count($this->users)) {
+            foreach ($this->users as $review) {
+                $rates[] = $review->pivot->rate;
+            }
+            
+            return array_sum($rates)/count($rates);
+        }
+        
+        return config('setting.rate_start');
     }
 }
