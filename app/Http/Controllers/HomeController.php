@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     protected $productRepository;
 
-    public function __construct(ProductInterface $product)
+    public function __construct(ProductInterface $productRepository)
     {
         $this->productRepository = $productRepository;
     }

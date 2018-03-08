@@ -12,6 +12,28 @@
                             <h3>@lang('lang.categories')</h3>
                         </div>
                         <div class="mega-menu-category">
+                            <ul class="nav">
+                                @if (count($parentCategories))
+                                    @foreach ($parentCategories as $parentCategory)
+                                        <li>
+                                            <a href="{{ route('ecommerce.category.show', [$parentCategory->id]) }}">{{ ucwords($parentCategory->name) }}</a>
+                                            @if (count($parentCategory->subCategories))
+                                                <div class="wrap-popup column1">
+                                                    <div class="popup">
+                                                        <ul class="nav">
+                                                            @foreach ($parentCategory->subCategories as $category)
+                                                                <li>
+                                                                    <a href="{{ route('ecommerce.category.show', [$category->id]) }}"><span>{{ ucwords($category->name) }}</span></a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
                         </div>
                     </div>
                 </div>

@@ -27,5 +27,9 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\Product\ProductInterface::class,
             \App\Repositories\Product\ProductEloquentRepository::class
         );
+        $this->app->bind(
+            \App\Repositories\Category\CategoryInterface::class,
+            \App\Repositories\Category\CategoryEloquentRepository::class
+        );
     }
 }

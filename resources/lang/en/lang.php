@@ -127,4 +127,16 @@ return [
     'nickname' => 'Nickname ',
     'addYourReview' => 'Add your review',
     'quanlity' => 'Quanlity',
+    'sortBy' => 'Sort By:',
+    'show' => 'Show:',
+    'date' => 'Date',
+    'name' => 'Name',
+    'price' => 'Price',
+    'shopBy' => 'Shop By',
+    'shoppingOptions' => 'Shopping Options',
+    'range' => '0 - 20',
+    'vnd' => '(.000.000vnd)',
+    'filter' => 'Filter',
+    'rangeLable' => 'Range:',
+    'notFound' => '404 not found.'
 ];

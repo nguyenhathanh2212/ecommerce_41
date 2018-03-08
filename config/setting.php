@@ -19,4 +19,11 @@ return [
     'star5' => 5,
     'star4' => 4,
     'star3' => 3,
+    'parent_category' => 0,
+    'num10' => 10,
+    'num20' => 20,
+    'num30' => 30,
+    'grid' => 'grid',
+    'list' => 'list',
+    'num0' => 0,
 ];
