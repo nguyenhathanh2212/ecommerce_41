@@ -30,3 +30,9 @@ $(document).ready(function() {
         var iid1 = "countbox_1";
         CountBack_slider(gsecs1,"countbox_1", 1);
 });
+$(document).ready(function() {
+    $('.flexslider').flexslider({
+        animation: "slide",
+        controlNav: "thumbnails",
+    });
+});

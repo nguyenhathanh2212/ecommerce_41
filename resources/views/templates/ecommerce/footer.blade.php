@@ -120,7 +120,7 @@
     <!-- countdown js --> 
     {{ Html::script(asset('templates/ecommerce/js/countdown.js')) }}
     <!-- Revolution Slider -->
-    {{ Html::script(asset('templates/ecommerce/js/cloud-zoom.js')) }}
+    {{ Html::script(asset('templates/ecommerce/js/jquery.flexslider.js')) }}
     {{ Html::script(asset('templates/ecommerce/js/jquery.magnifying-zoom.js')) }}
     {{ Html::script(asset('templates/ecommerce/js/footer.js')) }}
     </body>

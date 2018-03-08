@@ -4,20 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Repositories\Product\ProductRepositoryInterface;
+use App\Repositories\Product\ProductInterface;
 
 class HomeController extends Controller
 {
-    protected $product;
+    protected $productRepository;
 
-    public function __construct(ProductRepositoryInterface $product)
+    public function __construct(ProductInterface $product)
     {
-        $this->product = $product;
+        $this->productRepository = $productRepository;
     }
 
     public function index()
     {
-        $sliders = $this->product->getSlider(config('setting.sliders_number'));
+        $sliders = $this->productRepository->getSlider(config('setting.sliders_number'));
 
         return view('ecommerce.index.index', compact('sliders'));
     }

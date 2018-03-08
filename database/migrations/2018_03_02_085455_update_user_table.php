@@ -26,7 +26,9 @@ class UpdateUserTable extends Migration
      */
     public function down()
     {
-        $table->string('firstname')->change();
-        $table->string('lastname')->change();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('firstname')->change();
+            $table->string('lastname')->change();
+        });
     }
 }

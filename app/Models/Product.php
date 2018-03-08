@@ -10,13 +10,20 @@ class Product extends Model
         'category_id',
         'user_id',
         'name',
+        'preview',
         'description',
         'discount_percent',
         'quanlity',
+        'price',
         'status',
     ];
 
-    protected $appends = ['rate'];
+    protected $appends = [
+        'rate',
+        'customPrice',
+        'specialPrice',
+        'reviews'
+    ];
 
     public function comments()
     {
@@ -45,7 +52,7 @@ class Product extends Model
     
     public function users()
     {
-        return $this->belongsToMany(User::class, 'reviews', 'user_id', 'product_id')->withPivot('content', 'rate')->withTimestamps();
+        return $this->belongsToMany(User::class, 'reviews', 'product_id', 'user_id')->withPivot('content', 'rate')->withTimestamps();
     }
 
     public function getRateAttribute()
@@ -59,5 +66,20 @@ class Product extends Model
         }
         
         return config('setting.rate_start');
+    }
+
+    public function getCustomPriceAttribute()
+    {
+        return number_format($this->price, 0, '.', ',');
+    }
+
+    public function getSpecialPriceAttribute()
+    {
+        return number_format($this->price - ($this->price * $this->discount_percent) / 100, 0, '.', ',');
+    }
+
+    public function getReviewsAttribute()
+    {
+        return $this;
     }
 }

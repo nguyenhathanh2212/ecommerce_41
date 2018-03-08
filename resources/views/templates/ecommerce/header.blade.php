@@ -22,6 +22,7 @@
         {{ Html::style(asset('templates/ecommerce/css/simple-line-icons.css')) }}
         <!-- owl.carousel CSS -->
         {{ Html::style(asset('templates/ecommerce/css/owl.carousel.css')) }}
+        {{ Html::style(asset('templates/ecommerce/css/flexslider.css')) }}
         {{ Html::style(asset('templates/ecommerce/css/owl.theme.css')) }}
         {{ Html::style(asset('templates/ecommerce/css/owl.transitions.css')) }}
         <!-- animate CSS    -->

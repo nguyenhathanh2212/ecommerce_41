@@ -16,4 +16,7 @@ return [
     'rate_start' => 0,
     'strlimit30' => 30,
     'top' => 3,
+    'star5' => 5,
+    'star4' => 4,
+    'star3' => 3,
 ];

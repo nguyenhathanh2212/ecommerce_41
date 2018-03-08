@@ -3,8 +3,9 @@ namespace App\Repositories\Product;
 
 use App\Repositories\EloquentRepository;
 use App\Models\Product;
+use Session;
 
-class ProductEloquentRepository extends EloquentRepository implements ProductRepositoryInterface
+class ProductEloquentRepository extends EloquentRepository implements ProductInterface
 {
     public function getModel()
     {
