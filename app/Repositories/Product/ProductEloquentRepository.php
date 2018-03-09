@@ -51,4 +51,17 @@ class ProductEloquentRepository extends EloquentRepository implements ProductInt
     {
         return $this->model->orderBy('quanlity', 'DESC')->take($limit)->get();
     }
+
+    public function getCarts()
+    {
+        if (Session::has('carts') && count(Session::get('carts'))) {
+            foreach (Session::get('carts') as $id => $product) {
+                $idProducts[] = $id;
+            }
+
+            return $this->model->whereIn('id', $idProducts)->get();
+        }
+        
+        return [];
+    }
 }

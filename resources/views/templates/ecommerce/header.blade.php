@@ -119,28 +119,27 @@
                             <!-- End Search --> 
                         </div>
                         <!-- top cart -->
-                        
                         <div class="col-lg-3 col-xs-3 top-cart">
                             <div class="top-cart-contain">
                                 <div class="mini-cart">
                                     <div data-toggle="dropdown" data-hover="dropdown" class="basket dropdown-toggle"> <a href="">
                                         <div class="cart-icon"><i class="fa fa-shopping-cart"></i></div>
-                                        <div class="shoppingcart-inner hidden-xs"><span class="cart-title">@lang('lang.shoppingCart')</span> <span class="cart-total">@lang('lang.shoppingCart')</span></div>
+                                        <div class="shoppingcart-inner hidden-xs"><span class="cart-title">@lang('lang.shoppingCart')</span></div>
                                         </a></div>
                                     <div>
                                         <div class="top-cart-content">
                                             <div class="block-subtitle hidden-xs">@lang('lang.recentlyAddedItem')</div>
-                                            <ul id="cart-sidebar" class="mini-products-list">
-                                                <li class="item odd"> <a href="" title="" class="product-image">{{ Html::image(asset(''), 'html template', ['width' => '65']) }}</a>
-                                                    <div class="product-details"> <a href="" title="" class="remove-cart"><i class="icon-close"></i></a>
-                                                        <p class="product-name"><a href=""></a> </p>
-                                                        <strong></strong><span class="price"></span> </div>
-                                                </li>
+                                            <ul id="cart-sidebar" class="mini-products-list list-cart">
+                                                @include ('ecommerce.cart.cart')
                                             </ul>
-                                            <div class="top-subtotal"><span class="price"></span></div>
+                                            <div class="top-subtotal">
+                                                <span class="price"></span>
+                                            </div>
                                             <div class="actions">
-                                                <button class="btn-checkout" type="button"><i class="fa fa-check"></i><span>@lang('lang.checkout')</span></button>
-                                                <button class="view-cart" type="button"><i class="fa fa-shopping-cart"></i> <span>@lang('lang.viewCart')</span></button>
+                                                <a href="{{ route('ecommerce.cart.index') }}" class="btn-checkout" type="button">
+                                                    <i class="fa fa-check"></i>
+                                                    <span>@lang('lang.viewCart')</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

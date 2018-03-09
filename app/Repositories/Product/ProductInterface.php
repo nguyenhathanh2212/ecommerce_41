@@ -18,4 +18,6 @@ interface ProductInterface
     public function getTopSells($limit = 0);
 
     public function getFeatures($limit = 0);
+
+    public function getCarts();
 }
