@@ -12,7 +12,7 @@
         <meta name="keywords" content="bootstrap, ecommerce, fashion, layout, responsive, responsive template, responsive template download, responsive theme, retail, shop, shopping, store, Premium website templates, web templates, Multi-Purpose Responsive HTML5 Template"/>
         <!-- Mobile specific metas    , -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        @routes
         <meta name="csrf-token" content="{{ csrf_token() }}">
         {{ Html::style(asset('css/app.css')) }}
         {{ Html::script(asset('js/app.js')) }}
@@ -25,6 +25,7 @@
         {{ Html::style(asset('templates/ecommerce/css/flexslider.css')) }}
         {{ Html::style(asset('templates/ecommerce/css/owl.theme.css')) }}
         {{ Html::style(asset('templates/ecommerce/css/owl.transitions.css')) }}
+        {{ Html::style(asset('templates/ecommerce/css/jquery-ui.css')) }}
         <!-- animate CSS    -->
         <!-- jquery-ui.min CSS    -->
         <!-- Revolution Slider CSS -->
@@ -38,8 +39,7 @@
         
         @include ('templates.ecommerce.mobile')
 
-        <div id="page"> 
-            
+        <div id="page">
         <!-- Header -->
         <header>
             <div class="header-container">
@@ -99,9 +99,15 @@
                                     {!! Form::open() !!}
                                         <div class="input-group">
                                             <select class="cate-dropdown hidden-xs" name="category_id">
-                                                <option>@lang('lang.allCategories')</option>
-                                                <option>@lang('lang.allCategories')</option>
-                                                <option>&nbsp;&nbsp;&nbsp;@lang('lang.allCategories') </option>
+                                                <option value="0">@lang('lang.allCategories')</option>
+                                                @foreach ($parentCategories as $parentCategory)
+                                                    <option value="{{ $parentCategory->id }}">{{ ucwords($parentCategory->name) }}</option>
+                                                    @if (count($parentCategory->subCategories))
+                                                        @foreach ($parentCategory->subCategories as $subCategory)
+                                                            <option value="{{ $subCategory->id }}">&nbsp;&nbsp;&nbsp;{{ ucwords($subCategory->name) }} </option>
+                                                        @endforeach
+                                                    @endif
+                                                @endforeach
                                             </select>
                                             {!! Form::text('search', '', ['class' => 'form-control', 'placeholder' => trans('lang.search')]) !!}
                                             {!! Form::button('<i class="fa fa-search"></i>', ['class' => 'btn-search']) !!}

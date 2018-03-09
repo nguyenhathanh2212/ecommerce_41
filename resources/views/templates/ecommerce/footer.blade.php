@@ -115,6 +115,7 @@
 
     <!-- jquery.mobile-menu js -->
     {{ Html::script(asset('templates/ecommerce/js/mobile-menu.js')) }}
+    {{ Html::script(asset('templates/ecommerce/js/jquery-ui.js')) }}
     <!-- main js -->
     {{ Html::script(asset('templates/ecommerce/js/main.js')) }}
     <!-- countdown js --> 
@@ -123,5 +124,6 @@
     {{ Html::script(asset('templates/ecommerce/js/jquery.flexslider.js')) }}
     {{ Html::script(asset('templates/ecommerce/js/jquery.magnifying-zoom.js')) }}
     {{ Html::script(asset('templates/ecommerce/js/footer.js')) }}
+    {{ Html::script(asset('templates/ecommerce/js/script.js')) }}
     </body>
 </html>

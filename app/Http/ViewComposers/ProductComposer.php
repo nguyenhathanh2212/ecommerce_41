@@ -22,6 +22,6 @@ class ProductComposer
         $view->with('topBanners', $this->productRepository->random(config('setting.banner')));
         $view->with('topRates', $this->productRepository->getTopRates(config('setting.top')));
         $view->with('onSales', $this->productRepository->getOnSales(config('setting.top')));
-        $view->with('specialproductRepositorys', $this->productRepository->getSpecials(config('setting.topSell')));
+        $view->with('specialProducts', $this->productRepository->getSpecials(config('setting.topSell')));
     }
 }

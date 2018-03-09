@@ -25,7 +25,7 @@
         "bxslider": "^4.2.13",
         "flexslider": "^2.7.0",
         "font-awesome": "^4.7.0",
-        "jquery-ui": "github:jquery/jquery-ui",
+        "jquery-ui": "github:jquery/jquery-ui#1.11.4",
         "npm": "^5.7.1",
         "source-map": "^0.7.2",
         "to": "^0.2.9",
