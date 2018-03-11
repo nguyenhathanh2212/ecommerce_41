@@ -11,6 +11,7 @@
     {{ Html::script(asset('templates/admin/js/script.js')) }}
     {{ Html::script(asset('templates/admin/js/moment.min.js')) }}
     {{ Html::script(asset('templates/admin/js/jquery.nicescroll.js')) }}
+    {{ Html::script('/templates/admin/js/admin.js') }}
     {{ Html::style(asset('templates/admin/css/style.css')) }}
 </head>
 

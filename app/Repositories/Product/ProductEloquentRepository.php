@@ -3,6 +3,7 @@ namespace App\Repositories\Product;
 
 use App\Repositories\EloquentRepository;
 use App\Models\Product;
+use App\Models\Picture;
 use Session;
 use Auth;
 
@@ -79,5 +80,15 @@ class ProductEloquentRepository extends EloquentRepository implements ProductInt
     public function getRelatedProducts($category_id, $id)
     {
         return $this->model->where('category_id', $category_id)->where('id', '<>', $id)->take(config('setting.topSell'))->get();
+    }
+
+    public function search($text)
+    {
+        return $this->model->where('name', 'LIKE', '%' . $text . '%')->orderBy('created_at', 'DESC')->paginate(config('setting.paginate_admin'));
+    }
+
+    public function paginateProducts()
+    {
+        return $this->model->orderBy('created_at', 'DESC')->paginate(config('setting.paginate_admin'));
     }
 }

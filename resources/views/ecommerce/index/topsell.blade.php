@@ -208,7 +208,20 @@
                                                     @endfor
                                                 </div>
                                                 <div class="item-price">
-                                                    <div class="price-box"> <span class="regular-price"> <span class="price">{{ number_format($hotDeal->options->first()->pivot->price, 0, '.', ',') }}</span> </span> </div>
+                                                    <div class="price-box">
+                                                        @if ($hotDeal->discount_percent)
+                                                            <p class="special-price">
+                                                                <span class="price">{{ $hotDeal->specialPrice }}</span>
+                                                            </p>
+                                                            <p class="old-price">
+                                                                <span class="price">{{ $hotDeal->customPrice }}</span>
+                                                            </p>
+                                                        @else
+                                                            <p class="special-price">
+                                                                <span class="price">{{ $hotDeal->customPrice }}</span>
+                                                            </p>
+                                                        @endif
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

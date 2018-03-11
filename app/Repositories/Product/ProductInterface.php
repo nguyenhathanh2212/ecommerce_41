@@ -26,4 +26,8 @@ interface ProductInterface
     public function addReview($id, $columns = ['*']);
 
     public function getRelatedProducts($category_id, $id);
+
+    public function search($text);
+
+    public function paginateProducts();
 }
