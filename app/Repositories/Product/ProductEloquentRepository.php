@@ -4,6 +4,7 @@ namespace App\Repositories\Product;
 use App\Repositories\EloquentRepository;
 use App\Models\Product;
 use Session;
+use Auth;
 
 class ProductEloquentRepository extends EloquentRepository implements ProductInterface
 {
@@ -63,5 +64,20 @@ class ProductEloquentRepository extends EloquentRepository implements ProductInt
         }
         
         return [];
+    }
+    
+    public function getReviews($id)
+    {
+        return $this->model->findOrFail($id)->users()->orderBy('created_at', 'DESC')->paginate(config('setting.paginate_review'));
+    }
+
+    public function addReview($id, $columns = ['*'])
+    {
+        return $this->model->findOrFail($id)->users()->attach([Auth::user()->id => $columns]);
+    }
+
+    public function getRelatedProducts($category_id, $id)
+    {
+        return $this->model->where('category_id', $category_id)->where('id', '<>', $id)->take(config('setting.topSell'))->get();
     }
 }

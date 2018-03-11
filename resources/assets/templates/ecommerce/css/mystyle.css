@@ -104,3 +104,10 @@ i.icon.icon-google-social.icon-google-small-social {
 .flex-control-thumbs img {
     width: 95% !important;
 }
+
+.sub-comments {
+    display: none;
+}
+.content-comment-input, .content-sub-comment-input {
+    width: 100% !important;
+}

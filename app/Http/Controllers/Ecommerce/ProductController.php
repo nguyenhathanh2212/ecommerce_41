@@ -6,15 +6,20 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Repositories\Product\ProductInterface;
+use App\Repositories\Comment\CommentInterface;
 use Exception;
+use Auth;
+use App\Http\Requests\Ecommerce\ReviewRequest;
 
 class ProductController extends Controller
 {
     protected $productRepository;
+    protected $commentRepository;
 
-    public function __construct(ProductInterface $productRepository)
+    public function __construct(ProductInterface $productRepository, CommentInterface $commentRepository)
     {
         $this->productRepository = $productRepository;
+        $this->commentRepository = $commentRepository;
     }
     /**
      * Display a listing of the resource.
@@ -57,9 +62,11 @@ class ProductController extends Controller
     {
         try {
             $product = $this->productRepository->findOrFail($id);
-            $relatedProducts = $this->productRepository->where('category_id', $product->category_id)->where('id', '<>', $id)->take(config('setting.topSell'))->get();
+            $relatedProducts = $this->productRepository->getRelatedProducts($product->category_id, $id);
+            $reviews = $this->productRepository->getReviews($id);
+            $comments = $this->commentRepository->getComments($id);
 
-            return view('ecommerce.product.index', compact('product', 'relatedProducts'));
+            return view('ecommerce.product.index', compact('product', 'relatedProducts', 'reviews', 'comments'));
         } catch (Exception $e) {
             return view('templates.ecommerce.404');
         }
@@ -97,5 +104,29 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showReview(Request $request)
+    {
+        try {
+            $reviews = $this->productRepository->getReviews($request->id);
+
+            return view('ecommerce.product.contentreview', compact('reviews'));
+        } catch (Exception $e) {
+            return trans('lang.error');
+        }
+    }
+
+    public function addReview(ReviewRequest $request)
+    {
+        try {
+            $review = $request->only('content', 'rate');
+            $this->productRepository->addReview($request->id, $review);
+            $reviews = $this->productRepository->getReviews($request->id);
+
+            return view('ecommerce.product.contentreview', compact('reviews'));
+        } catch (Exception $e) {
+            return trans('lang.error');
+        }
     }
 }

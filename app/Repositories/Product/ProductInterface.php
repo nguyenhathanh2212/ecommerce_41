@@ -20,4 +20,10 @@ interface ProductInterface
     public function getFeatures($limit = 0);
 
     public function getCarts();
+
+    public function getReviews($id);
+
+    public function addReview($id, $columns = ['*']);
+
+    public function getRelatedProducts($category_id, $id);
 }

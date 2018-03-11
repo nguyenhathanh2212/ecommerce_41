@@ -98,4 +98,74 @@ $(document).ready(function() {
             }
         });
     }
+    
+    $('.content-show-reviews').on('click', '.pagination a',function(event) {
+        event.preventDefault();
+        $('li').removeClass('active');
+        $(this).parent('li').addClass('active');
+        var myurl = $(this).attr('href');
+        var page=$(this).attr('href').split('page=')[1];
+        getData(page);
+    });
+
+    function getData(page){
+        var id = $('.product-review').attr('id');
+        $.ajax({
+            url: route('ecommerce.product.showreview') +'?page=' + page,
+            type: 'post',
+            data: {
+                id: id,
+            },
+            success: function success(data) {
+                $('.content-show-reviews').html(data);
+            }
+        });
+    }
+
+    $('.form-review').submit(function(event) {
+        var id = $('.product-review').attr('id');
+        var rate = $('input[name=rate]:checked').val();
+        var content = $('.content-review').val();
+        $.ajax({
+            url: route('ecommerce.product.addreview'),
+            type: 'post',
+            data: {
+                id: id,
+                rate: rate,
+                content: content,
+            },
+            success: function success(data) {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    alert('You have successfully added a review!');
+                    $('.content-show-reviews').html(data);
+                }
+            }
+        });
+        return false;
+    });
+
+    $('.content-show-comments').on('click', '.pagination a',function(event) {
+        event.preventDefault();
+        $('li').removeClass('active');
+        $(this).parent('li').addClass('active');
+        var myurl = $(this).attr('href');
+        var page=$(this).attr('href').split('page=')[1];
+        getData(page);
+    });
+    
+    function getData(page){
+        var id = $('.product-review').attr('id');
+        $.ajax({
+            url: route('ecommerce.comment.showcomment') +'?page=' + page,
+            type: 'post',
+            data: {
+                id: id,
+            },
+            success: function success(data) {
+                $('.content-show-comments').html(data);
+            }
+        });
+    }
 });
