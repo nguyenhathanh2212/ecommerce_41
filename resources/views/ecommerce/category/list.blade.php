@@ -1,3 +1,4 @@
+{{ Html::script(asset('templates/ecommerce/js/cart.js')) }}
 <div class="product-list-area">
     <ul class="products-list" id="products-list">
         @if (count($products))
@@ -48,7 +49,7 @@
                             <p>{{ $product->preview }}</p>
                         </div>
                         <div class="actions">
-                            <button type="button" class="button cart-button">
+                            <button type="button" class="button cart-button add-to-card" id="{{ $product->id }}">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span> @lang('lang.addToCart')</span>
                             </button>

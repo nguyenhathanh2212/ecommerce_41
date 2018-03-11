@@ -8,20 +8,30 @@
                         @foreach ($topRates as $topRate)
                             <div class="jtv-product jtv-cat-margin">
                                 <div class="product-img">
-                                    {!! html_entity_decode(Html::link('', Html::image($topRate->pictures->first()->picture), '', ['class' => 'secondary-img'])) !!}
+                                    {!! html_entity_decode(Html::link(route('ecommerce.product.show', [$topRate->id]), Html::image($topRate->pictures->first()->picture), '', ['class' => 'secondary-img'])) !!}
                                 </div>
                                 <div class="jtv-product-content">
-                                    <h3>{{ Html::link('', ucwords($topRate->name)) }}</h3>
+                                    <h3>{{ Html::link(route('ecommerce.product.show', [$topRate->id]), ucwords($topRate->name)) }}</h3>
                                     <div class="price-box">
-                                        <span class="regular-price">
-                                            <span class="price">{{ number_format($topRate->options->first()->pivot->price, 0, '.', ',') }}
-                                            </span>
-                                        </span>
+                                        @if ($topRate->discount_percent)
+                                            <p class="special-price">
+                                                <span class="price">{{ $topRate->specialPrice }}</span>
+                                            </p>
+                                            <p class="old-price">
+                                                <span class="price">{{ $topRate->customPrice }}</span>
+                                            </p>
+                                        @else
+                                            <p class="special-price">
+                                                <span class="price">{{ $topRate->customPrice }}</span>
+                                            </p>
+                                        @endif
                                     </div>
                                     <div class="jtv-product-action">
                                         <div class="jtv-extra-link">
                                             <div class="button-cart">
-                                                <button><i class="fa fa-shopping-cart"></i></button>
+                                                <button class="add-to-card" id="{{ $topRate->id }}">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </button>
                                             </div>
                                             {!! html_entity_decode(Html::link('', '<i class="fa fa-search"></i>', ['data-toggle' => 'modal', 'data-target' => '#productModal'])) !!}
                                             {!! html_entity_decode(Html::link('', '<i class="fa fa-heart"></i>')) !!}
@@ -40,19 +50,30 @@
                         @foreach ($onSales as $onSale)
                             <div class="jtv-product jtv-cat-margin">
                                 <div class="product-img">
-                                    {!! html_entity_decode(Html::link('', Html::image($onSale->pictures->first()->picture), '', ['class' => 'secondary-img'])) !!}
+                                    {!! html_entity_decode(Html::link(route('ecommerce.product.show', [$onSale->id]), Html::image($onSale->pictures->first()->picture), '', ['class' => 'secondary-img'])) !!}
                                 </div>
                                 <div class="jtv-product-content">
-                                    <h3>{{ Html::link('', ucwords($onSale->name)) }}</h3>
+                                    <h3>{{ Html::link(route('ecommerce.product.show', [$onSale->id]), ucwords($onSale->name)) }}</h3>
                                     <div class="price-box">
-                                        <span class="regular-price">
-                                            <span class="price">{{ number_format($onSale->options->first()->pivot->price, 0, '.', ',') }}</span>
-                                        </span>
+                                        @if ($onSale->discount_percent)
+                                            <p class="special-price">
+                                                <span class="price">{{ $onSale->specialPrice }}</span>
+                                            </p>
+                                            <p class="old-price">
+                                                <span class="price">{{ $onSale->customPrice }}</span>
+                                            </p>
+                                        @else
+                                            <p class="special-price">
+                                                <span class="price">{{ $onSale->customPrice }}</span>
+                                            </p>
+                                        @endif
                                     </div>
                                     <div class="jtv-product-action">
                                         <div class="jtv-extra-link">
                                             <div class="button-cart">
-                                                <button><i class="fa fa-shopping-cart"></i></button>
+                                                <button class="add-to-card" id="{{ $onSale->id }}">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </button>
                                             </div>
                                             {!! html_entity_decode(Html::link('', '<i class="fa fa-search"></i>', ['data-toggle' => 'modal', 'data-target' => '#productModal'])) !!}
                                             {!! html_entity_decode(Html::link('', '<i class="fa fa-heart"></i>')) !!}

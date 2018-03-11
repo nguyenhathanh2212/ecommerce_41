@@ -21,11 +21,15 @@
                                                         <div class="item-inner">
                                                             <div class="product-thumbnail">
                                                                 <div class="icon-sale-label sale-left">@lang('lang.sale')</div>
-                                                                    <div class="icon-new-label new-right">@lang('lang.new')</div>
-                                                                    <div class="pr-img-area"> <a title="" href="">
+                                                                <div class="icon-new-label new-right">@lang('lang.new')</div>
+                                                                <div class="pr-img-area">
+                                                                    <a title="" href="{{ route('ecommerce.product.show', [$feature->id]) }}">
                                                                         <figure> {{ Html::image(asset($feature->pictures->first()->picture), '', ['class' => 'first-img', 'height' => '280em']) }} {{ Html::image(asset($feature->pictures->first()->picture), '', ['class' => 'hover-img', 'height' => '280em']) }}</figure>
                                                                     </a>
-                                                                    <button type="button" class="add-to-cart-mt"> <i class="fa fa-shopping-cart"></i><span> @lang('lang.addToCart')</span> </button>
+                                                                    <button type="button" class="add-to-cart-mt" id={{ $feature->id }}>
+                                                                        <i class="fa fa-shopping-cart"></i>
+                                                                        <span> @lang('lang.addToCart')</span>
+                                                                    </button>
                                                                 </div>
                                                                 <div class="pr-info-area">
                                                                     <div class="pr-button">
@@ -44,7 +48,7 @@
                                                             <div class="item-info">
                                                                 <div class="info-inner">
                                                                     <div class="item-title">
-                                                                        {!! Html::link('', ucwords($feature->name)) !!}</div>
+                                                                        {!! Html::link(route('ecommerce.product.show', [$feature->id]), ucwords($feature->name)) !!}</div>
                                                                     <div class="item-content">
                                                                         <div class="rating">
                                                                             @for ($i = config('setting.rate_start'); $i < ceil($feature->rate); $i++)
@@ -55,7 +59,20 @@
                                                                             @endfor
                                                                         </div>
                                                                         <div class="item-price">
-                                                                        <div class="price-box">     <span class="regular-price"> <span class="price">{{ number_format($feature->options->first()->pivot->price, 0, '.', ',') }}</span> </span> </div>
+                                                                            <div class="price-box">
+                                                                                @if ($feature->discount_percent)
+                                                                                    <p class="special-price">
+                                                                                        <span class="price">{{ $feature->specialPrice }}</span>
+                                                                                    </p>
+                                                                                    <p class="old-price">
+                                                                                        <span class="price">{{ $feature->customPrice }}</span>
+                                                                                    </p>
+                                                                                @else
+                                                                                    <p class="special-price">
+                                                                                        <span class="price">{{ $feature->customPrice }}</span>
+                                                                                    </p>
+                                                                                @endif
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -80,11 +97,13 @@
                                                         <div class="item-inner">
                                                             <div class="product-thumbnail">
                                                                 <div class="icon-sale-label sale-left">@lang('lang.sale')</div>
-                                                                    <div class="icon-new-label new-right">@lang('lang.new')</div>
-                                                                    <div class="pr-img-area"> <a title="" href="">
+                                                                <div class="icon-new-label new-right">@lang('lang.new')</div>
+                                                                <div class="pr-img-area">
+                                                                    <a title="" href="{{ route('ecommerce.product.show', [$topSell->id]) }}">
                                                                         <figure> {{ Html::image(asset($topSell->pictures->first()->picture), '', ['class' => 'first-img', 'height' => '280em']) }} {{ Html::image(asset($topSell->pictures->first()->picture), '', ['class' => 'hover-img', 'height' => '280em']) }}</figure>
                                                                     </a>
-                                                                    <button type="button" class="add-to-cart-mt"> <i class="fa fa-shopping-cart"></i><span> @lang('lang.addToCart')</span> </button>
+                                                                    <button type="button" class="add-to-cart-mt" id="{{ $topSell->id }}"> <i class="fa fa-shopping-cart"></i><span> @lang('lang.addToCart')</span>
+                                                                    </button>
                                                                 </div>
                                                                 <div class="pr-info-area">
                                                                     <div class="pr-button">
@@ -103,7 +122,7 @@
                                                             <div class="item-info">
                                                                 <div class="info-inner">
                                                                     <div class="item-title">
-                                                                        {!! Html::link('',ucwords($topSell->name)) !!}
+                                                                        {!! Html::link(route('ecommerce.product.show', [$topSell->id]),ucwords($topSell->name)) !!}
                                                                     </div>
                                                                     <div class="item-content">
                                                                         <div class="rating">
@@ -115,7 +134,20 @@
                                                                             @endfor
                                                                         </div>
                                                                         <div class="item-price">
-                                                                        <div class="price-box">     <span class="regular-price"> <span class="price">{{ number_format($topSell->options->first()->pivot->price, 0, '.', ',') }}</span> </span> </div>
+                                                                            <div class="price-box">
+                                                                                @if ($topSell->discount_percent)
+                                                                                    <p class="special-price">
+                                                                                        <span class="price">{{ $topSell->specialPrice }}</span>
+                                                                                    </p>
+                                                                                    <p class="old-price">
+                                                                                        <span class="price">{{ $topSell->customPrice }}</span>
+                                                                                    </p>
+                                                                                @else
+                                                                                    <p class="special-price">
+                                                                                        <span class="price">{{ $topSell->customPrice }}</span>
+                                                                                    </p>
+                                                                                @endif
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -143,7 +175,9 @@
                                         <div class="icon-hot-label hot-right">@lang('lang.hot')</div>
                                         <div class="pr-img-area"> <a title="" href="">
                                             <figure> {{ Html::image(asset($hotDeal->pictures->first()->picture), '', ['class' => 'first-img', 'height' => '280em']) }} {{ Html::image(asset($hotDeal->pictures->first()->picture), '', ['class' => 'hover-img', 'height' => '280em']) }}</figure></figure></a>
-                                            <button type="button" class="add-to-cart-mt"> <i class="fa fa-shopping-cart"></i><span>@lang('lang.addToCart')</span> </button>
+                                            <button type="button" class="add-to-cart-mt" id={{ $hotDeal->id }}>
+                                                <i class="fa fa-shopping-cart"></i><span>@lang('lang.addToCart')</span>
+                                            </button>
                                         </div>
                                         <div class="pr-info-area">
                                             <div class="pr-button">

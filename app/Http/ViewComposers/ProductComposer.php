@@ -23,5 +23,6 @@ class ProductComposer
         $view->with('topRates', $this->productRepository->getTopRates(config('setting.top')));
         $view->with('onSales', $this->productRepository->getOnSales(config('setting.top')));
         $view->with('specialProducts', $this->productRepository->getSpecials(config('setting.topSell')));
+        $view->with('carts', $this->productRepository->getCarts());
     }
 }

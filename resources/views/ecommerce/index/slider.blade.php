@@ -44,7 +44,7 @@
                         data-endelementdelay="0.1"
                         data-linktoslide="next"
                         style="border: 2px solid #fed700;border-radius: 50px; font-size:14px; background-color:#fed700; color:#333; z-index: 12; max-width: auto; max-height: auto; white-space: nowrap; letter-spacing:1px;">
-                        {{ Html::link('', trans('lang.learnMore'), ['class' => 'largebtn slide1']) }}
+                        {{ Html::link(route('ecommerce.product.show', [$sliders->first()->id]), trans('lang.learnMore'), ['class' => 'largebtn slide1']) }}
                     </div>
                 </li>
               
@@ -101,7 +101,7 @@
                         data-endelementdelay="0.1"
                         data-linktoslide="next"
                         style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;">
-                        {{ Html::link('', trans('lang.getItNow'), ['class' => 'largebtn solid']) }}
+                        {{ Html::link(route('ecommerce.product.show', [$sliders->skip(config('setting.skip1'))->first()->id]), trans('lang.getItNow'), ['class' => 'largebtn solid']) }}
                     </div>
                 </li>
               
@@ -154,7 +154,7 @@
                         data-endelementdelay="0.1"
                         data-linktoslide="next"
                         style="z-index: 12; max-width: auto; max-height: auto; white-space: nowrap;">
-                        {{ Html::link('', trans('lang.getItNow'), ['class' => 'largebtn solid']) }}
+                        {{ Html::link(route('ecommerce.product.show', [$sliders->skip(config('setting.skip2'))->first()->id]), trans('lang.getItNow'), ['class' => 'largebtn solid']) }}
                     </div>
                 </li>
             </ul>

@@ -138,5 +138,12 @@ return [
     'vnd' => '(.000.000vnd)',
     'filter' => 'Filter',
     'rangeLable' => 'Range:',
-    'notFound' => '404 not found.'
+    'notFound' => '404 not found.',
+    'product' => 'Product',
+    'unitPrice' => 'Unit Price',
+    'total' => 'Total',
+    'proceedToCheckout' => 'Proceed To Checkout',
+    'areYouSure' => 'Are you sure ?',
+    'error' => 'Error',
+    'cartIsEmpty' => 'Cart is empty',
 ];

@@ -34,4 +34,20 @@ Route::namespace('Ecommerce')->group(function () {
         'as' => 'ecommerce.category.sortby',
         'uses' => 'CategoryController@sortBy',
     ]);
+    Route::post('addcart', [
+        'as' => 'ecommerce.cart.addcart',
+        'uses' => 'CartController@addCart',
+    ]);
+    Route::get('cart', [
+        'as' => 'ecommerce.cart.index',
+        'uses' => 'CartController@index',
+    ]);
+    Route::post('cart/delete', [
+        'as' => 'ecommerce.cart.delete',
+        'uses' => 'CartController@delete',
+    ]);
+    Route::post('cart/changequanlity', [
+        'as' => 'ecommerce.cart.changequanlity',
+        'uses' => 'CartController@changeQuanlity',
+    ]);
 });

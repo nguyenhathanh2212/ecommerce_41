@@ -1,6 +1,7 @@
 @extends ('templates.ecommerce.master')
 
 @section ('content')
+    {{ Html::script(asset('templates/ecommerce/js/cart.js')) }}
     <!-- Home Slider Start -->
     @include ('ecommerce.index.slider')
     <!-- top sell -->

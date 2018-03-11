@@ -1,3 +1,4 @@
+{{ Html::script(asset('templates/ecommerce/js/cart.js')) }}
 <div class="product-grid-area">
     <ul class="products-grid">
         @if (count($products))
@@ -16,7 +17,8 @@
                                         {{ Html::image(asset($product->pictures->first()->picture), '', ['class' => 'first-img', 'height' => '280em']) }}
                                         {{ Html::image(asset($product->pictures->first()->picture), '', ['class' => 'hover-img', 'height' => '280em']) }}
                                     </a>
-                                    <button type="button" class="add-to-cart-mt">   <i class="fa fa-shopping-cart"></i>
+                                    <button type="button" class="add-to-cart-mt" id="{{ $product->id }}">
+                                        <i class="fa fa-shopping-cart"></i>
                                         <span> @lang('lang.addToCart')</span>
                                     </button>
                                 </div>

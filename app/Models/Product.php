@@ -22,7 +22,8 @@ class Product extends Model
         'rate',
         'customPrice',
         'specialPrice',
-        'reviews'
+        'reviews',
+        'numberPrice',
     ];
 
     public function comments()
@@ -71,6 +72,11 @@ class Product extends Model
     public function getCustomPriceAttribute()
     {
         return number_format($this->price, 0, '.', ',');
+    }
+
+    public function getNumberPriceAttribute()
+    {
+        return $this->price - ($this->price * $this->discount_percent) / 100;
     }
 
     public function getSpecialPriceAttribute()
