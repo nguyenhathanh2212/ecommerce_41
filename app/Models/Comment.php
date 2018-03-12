@@ -13,6 +13,8 @@ class Comment extends Model
         'content',
     ];
 
+    protected $appends = ['sub_comments'];
+
     public function product()
     {
         return $this->belongsTo(Product::class);
@@ -26,5 +28,10 @@ class Comment extends Model
     public function subComments()
     {
         return $this->hasMany(Comment::class, 'parent_id', 'id');
+    }
+
+    public function getSubCommentsAttribute()
+    {
+        return $this->subComments()->orderBy('created_at', 'DESC')->get();
     }
 }

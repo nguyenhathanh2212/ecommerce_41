@@ -146,4 +146,13 @@ return [
     'areYouSure' => 'Are you sure ?',
     'error' => 'Error',
     'cartIsEmpty' => 'Cart is empty',
+    'relatedProducts' => 'Related Products',
+    'logInToReview' => 'You must log in to review!',
+    'logInToComment' => 'You must log in to comment!',
+    'customerComments' => 'Customer Comments',
+    'reply' => 'Reply',
+    'comment' => 'Comment',
+    'reply' => 'reply',
+    'showReply' => 'Show reply',
+    
 ];

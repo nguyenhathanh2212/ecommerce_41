@@ -3,7 +3,7 @@
         <div class="col-xs-12">
             <div class="related-product-area">       
                 <div class="page-header">
-                    <h2>Related Products</h2>
+                    <h2>@lang('lang.relatedProducts')</h2>
                 </div>
                 <div class="related-products-pro">
                     <div class="slider-items-products">

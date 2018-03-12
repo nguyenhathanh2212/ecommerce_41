@@ -26,4 +26,6 @@ return [
     'grid' => 'grid',
     'list' => 'list',
     'num0' => 0,
+    'paginate_review' => 2,
+    'paginate_comment' => 4,
 ];

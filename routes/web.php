@@ -19,6 +19,26 @@ Route::namespace('Ecommerce')->group(function () {
     Route::resource('product', 'ProductController', [
         'as' => 'ecommerce'
     ]);
+    Route::post('product/showreview', [
+        'as' => 'ecommerce.product.showreview',
+        'uses' => 'ProductController@showReview', 
+    ]);
+    Route::post('product/addreview', [
+        'as' => 'ecommerce.product.addreview',
+        'uses' => 'ProductController@addReview', 
+    ]);
+    Route::post('product/addcomment', [
+        'as' => 'ecommerce.comment.addcomment',
+        'uses' => 'CommentController@addComment', 
+    ]);
+    Route::post('product/addsubcomment', [
+        'as' => 'ecommerce.comment.addsubcomment',
+        'uses' => 'CommentController@addSubComment', 
+    ]);
+    Route::post('product/showcomment', [
+        'as' => 'ecommerce.comment.showcomment',
+        'uses' => 'CommentController@showComment', 
+    ]);
     Route::resource('category', 'CategoryController', [
         'as' => 'ecommerce'
     ]);
