@@ -32,5 +32,5 @@ interface RepositoryInterface
 
     public function createMany($array);
 
-    public function whereIn($olumn, $values);
+    public function whereIn($column, $values);
 }

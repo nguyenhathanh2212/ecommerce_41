@@ -54,7 +54,7 @@
     </table>
 </div>
 <div class="cart_navigation">
-    <a class="checkout-btn" href="#">
+    <a class="checkout-btn" href="{{ route('ecommerce.checkout.index') }}">
         <i class="fa fa-check"></i> @lang('lang.proceedToCheckout')
     </a>
 </div>

@@ -30,4 +30,6 @@ interface ProductInterface
     public function search($text);
 
     public function paginateProducts();
+    
+    public function getIdCarts();
 }

@@ -56,7 +56,7 @@
                 <p>{{ $product->preview }}</p>
             </div>
             <div class="product-variation">
-                {{ Form::open(['name' => 'add-cart', 'class' => 'add-cart', 'id' => $product->id]) }}
+                {{ Form::open(['name' => 'add-cart', 'class' => 'add-cart-detail-product', 'id' => $product->id]) }}
                     <div class="product-color-size-area">
                     </div>
                     <div class="cart-plus-minus">
@@ -65,7 +65,7 @@
                             <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 0 ) result.value--;return false;" class="dec qtybutton">
                                 <i class="fa fa-minus">&nbsp;</i>
                             </div>
-                            {{ Form::number('qty', '1', ['class' => 'qty', 'maxlength' => '12', 'id' => 'qty']) }}
+                            {{ Form::number('qty', '1', ['class' => 'qty qty-product', 'maxlength' => '12', 'id' => 'qty']) }}
                             <div onClick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;" class="inc qtybutton">
                                 <i class="fa fa-plus">&nbsp;</i>
                             </div>

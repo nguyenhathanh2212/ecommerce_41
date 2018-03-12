@@ -26,9 +26,13 @@ return [
     'grid' => 'grid',
     'list' => 'list',
     'num0' => 0,
+    'num1' => 1,
     'paginate_review' => 2,
     'paginate_comment' => 4,
     'paginate_admin' => 10,
     'fileUpload' => 'templates/ecommerce/images/product/',
     'true' => true,
+    'direct' => 'direct',
+    'status_default' => 0,
+    'fileUpload' => 'templates/ecommerce/images/product/',
 ];
