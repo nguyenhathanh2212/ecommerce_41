@@ -14,6 +14,11 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/auth/{provider}', [
+    'uses' => 'SocialAuthController@redirectToProvider',
+    'as' => 'social',
+]);
+Route::get('/auth/{provider}/callback', 'SocialAuthController@handleProviderCallback');
 
 Route::namespace('Ecommerce')->group(function () {
     Route::resource('product', 'ProductController', [
@@ -82,6 +87,20 @@ Route::namespace('Ecommerce')->group(function () {
         Route::get('confirm', [
             'as' => 'ecommerce.checkout.confirm',
             'uses' => 'CheckoutController@confirm',
+        ]);
+    });
+    Route::prefix('profile')->middleware('auth')->group(function () {
+        Route::get('/', [
+            'as' => 'ecommerce.profile.index',
+            'uses' => 'ProfileController@index',
+        ]);
+        Route::get('order', [
+            'as' => 'ecommerce.profile.order',
+            'uses' => 'ProfileController@showOrder',
+        ]);
+        Route::get('order/detail/{id}', [
+            'as' => 'ecommerce.profile.orderdetail',
+            'uses' => 'ProfileController@showOrderDetail',
         ]);
     });
 });

@@ -58,12 +58,12 @@
                         <div class="social-inner">
                             <div class="fb-wrapper">
                                 <div>
-                                    {!! html_entity_decode(Html::link('', '<i class="icon icon-fb-social icon-fb-small-social"></i><span>' . trans('lang.facebook') . '</span>', ['id' => 'facebook-login-button', 'class' => 'fb-auth inner facebook-login-auth'] )) !!}
+                                    {!! html_entity_decode(Html::link(route('social', ['facebook']), '<i class="icon icon-fb-social icon-fb-small-social"></i><span>' . trans('lang.facebook') . '</span>', ['id' => 'facebook-login-button', 'class' => 'fb-auth inner facebook-login-auth'] )) !!}
                                 </div>
                             </div>
                             <div class="google-wrapper">
                                 <div>
-                                    {!! html_entity_decode(Html::link('', '<i class="icon icon-google-social icon-google-small-social"></i><span>' . trans('lang.google') . '</span>', ['id' => 'google-login-button', 'class' => 'google-auth inner google-login-auth'] )) !!}
+                                    {!! html_entity_decode(Html::link(route('social', ['google']), '<i class="icon icon-google-social icon-google-small-social"></i><span>' . trans('lang.google') . '</span>', ['id' => 'google-login-button', 'class' => 'google-auth inner google-login-auth'] )) !!}
                                 </div>
                             </div>
                         </div>

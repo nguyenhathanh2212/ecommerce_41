@@ -35,4 +35,7 @@ return [
     'direct' => 'direct',
     'status_default' => 0,
     'fileUpload' => 'templates/ecommerce/images/product/',
+    'processing' => 0,
+    'delivering' => 1,
+    'closed' => 2,
 ];

@@ -16,6 +16,10 @@ class Order extends Model
         'status',
     ];
 
+    protected $appends = [
+        'status_custom'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -24,5 +28,18 @@ class Order extends Model
     public function products()
     {
         return $this->belongsToMany(Product::class)->withPivot('status')->withTimestamps();
+    }
+
+    public function getStatusCustomAttribute()
+    {
+        if ($this->status == config('setting.processing')) {
+            return trans('lang.processing');
+        }
+
+        if ($this->status == config('setting.delivering')) {
+            return trans('lang.delivering');
+        }
+
+        return trans('lang.closed');
     }
 }
