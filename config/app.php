@@ -162,6 +162,7 @@ return [
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Fedeisas\LaravelMailCssInliner\LaravelMailCssInlinerServiceProvider::class,
 
     ],
 
