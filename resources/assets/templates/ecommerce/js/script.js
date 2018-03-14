@@ -169,3 +169,35 @@ $(document).ready(function() {
         });
     }
 });
+
+$(document).ready(function() {
+    if ($('#add-info').hasClass('checkbox-add-info')) {
+        $('#add-info').prop('checked', false);
+        $('.input-order').css('display', 'none');
+    }
+    $('.checkbox-add-info').click(function(event) {
+        $('.input-order').toggle(300);
+    });
+});
+
+$('.add-cart-detail-product').submit(function(event) {
+    var id = $(this).attr('id');
+    var quanlity = $('.qty-product').val();
+    if (quanlity <= 0) {
+        quanlity = 1;
+    }
+    $.ajax({
+        url: route('ecommerce.cart.addcart'),
+        type: 'post',
+        data: {
+            id: id,
+            quanlity: quanlity,
+        },
+        success: function( data ) {
+            alert('Added to shopping cart.');
+            $('.list-cart').html(data);
+        }
+    });
+
+    return false;
+});

@@ -91,4 +91,17 @@ class ProductEloquentRepository extends EloquentRepository implements ProductInt
     {
         return $this->model->orderBy('created_at', 'DESC')->paginate(config('setting.paginate_admin'));
     }
+
+    public function getIdCarts()
+    {
+        if (Session::has('carts') && count(Session::get('carts'))) {
+            foreach (Session::get('carts') as $id => $product) {
+                $idProducts[] = $id;
+            }
+
+            return $this->model->whereIn('id', $idProducts)->pluck('id');
+        }
+        
+        return [];
+    }
 }

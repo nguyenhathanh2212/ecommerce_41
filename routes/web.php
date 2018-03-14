@@ -70,6 +70,20 @@ Route::namespace('Ecommerce')->group(function () {
         'as' => 'ecommerce.cart.changequanlity',
         'uses' => 'CartController@changeQuanlity',
     ]);
+    Route::prefix('checkout')->middleware('auth')->group(function () {
+        Route::get('/', [
+            'as' => 'ecommerce.checkout.index',
+            'uses' => 'CheckoutController@index',
+        ]);
+        Route::post('/', [
+            'as' => 'ecommerce.checkout.order',
+            'uses' => 'CheckoutController@order',
+        ]);
+        Route::get('confirm', [
+            'as' => 'ecommerce.checkout.confirm',
+            'uses' => 'CheckoutController@confirm',
+        ]);
+    });
 });
 
 Route::namespace('Admin')->prefix('admin')->group(function () {
