@@ -6,6 +6,8 @@ interface RepositoryInterface
 {
     public function all($columns = ['*']);
 
+    public function find($id, $column = ['*']);
+
     public function findOrFail($id, $column = ['*']);
 
     public function paginate($limit = null, $column = ['*']);

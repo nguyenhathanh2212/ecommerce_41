@@ -126,7 +126,7 @@ return [
     'summaryOfYourReview' => 'Summary of Your Review ',
     'nickname' => 'Nickname ',
     'addYourReview' => 'Add your review',
-    'quanlity' => 'Quanlity',
+    'quanlity' => 'Quantity',
     'sortBy' => 'Sort By:',
     'show' => 'Show:',
     'date' => 'Date',
@@ -197,4 +197,5 @@ return [
     'success' => 'Success',
     'continueShopping' => 'Continue shopping!',
     'notThingInCart' => 'Nothing in the cart!',
+    'import' => 'Import file',
 ];

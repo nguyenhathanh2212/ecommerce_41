@@ -24,6 +24,11 @@ abstract class EloquentRepository implements RepositoryInterface
         return $this->model->all($columns);
     }
 
+    public function find($id, $columns = ['*'])
+    {
+        return $this->model->find($id, $columns);
+    }
+
     public function findOrFail($id, $columns = ['*'])
     {
         return $this->model->findOrFail($id, $columns);
