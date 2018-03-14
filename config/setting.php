@@ -28,4 +28,7 @@ return [
     'num0' => 0,
     'paginate_review' => 2,
     'paginate_comment' => 4,
+    'paginate_admin' => 10,
+    'fileUpload' => 'templates/ecommerce/images/product/',
+    'true' => true,
 ];

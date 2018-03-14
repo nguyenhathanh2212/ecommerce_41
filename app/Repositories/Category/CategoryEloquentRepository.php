@@ -29,4 +29,19 @@ class CategoryEloquentRepository extends EloquentRepository implements CategoryI
 
         return $products;
     }
+
+    public function getSubCategories($parent_id)
+    {
+        return $this->model->findOrFail($parent_id)->subCategories;
+    }
+
+    public function getIdParents()
+    {
+        return $this->model->where('parent_id', config('setting.parent_category'))->pluck('name', 'id');
+    }
+
+    public function getIdFirstSubCategories($id)
+    {
+        return $this->model->findOrFail($id)->subCategories->pluck('name', 'id');
+    }
 }

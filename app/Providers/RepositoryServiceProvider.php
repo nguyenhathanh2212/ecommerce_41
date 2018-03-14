@@ -32,6 +32,10 @@ class RepositoryServiceProvider extends ServiceProvider
             \App\Repositories\Category\CategoryEloquentRepository::class
         );
         $this->app->bind(
+            \App\Repositories\Picture\PictureInterface::class,
+            \App\Repositories\Picture\PictureEloquentRepository::class
+        );
+        $this->app->bind(
             \App\Repositories\Comment\CommentInterface::class,
             \App\Repositories\Comment\CommentEloquentRepository::class
         );

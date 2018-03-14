@@ -71,3 +71,25 @@ Route::namespace('Ecommerce')->group(function () {
         'uses' => 'CartController@changeQuanlity',
     ]);
 });
+
+Route::namespace('Admin')->prefix('admin')->group(function () {
+    Route::resource('product', 'ProductController', [
+        'as' => 'admin',
+    ]);
+    Route::post('product/search',[
+        'as' => 'admin.product.search',
+        'uses' => 'ProductController@search',
+    ]);
+    Route::post('product/paginate',[
+        'as' => 'admin.product.paginate',
+        'uses' => 'ProductController@paginate',
+    ]);
+    Route::post('product/subcategory',[
+        'as' => 'admin.product.subcategory',
+        'uses' => 'ProductController@getSubCategories',
+    ]);
+    Route::post('product/delete',[
+        'as' => 'admin.product.delete',
+        'uses' => 'ProductController@delete',
+    ]);
+});
