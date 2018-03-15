@@ -13,6 +13,7 @@ use App\Http\Requests\Admin\ProductRequest;
 use Exception;
 use Auth;
 use DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -212,4 +213,48 @@ class ProductController extends Controller
             $request->session()->flash('error', trans('lang.delError'));
         }
     }
+
+    public function createImportFile()
+    {
+        try {
+            $parentCategries = $this->categoryRepository->getIdParents();
+            $subCategries = $this->categoryRepository->getIdFirstSubCategories($this->categoryRepository->getParents()->first()->id);
+
+            return view('admin.product.addfile', compact('parentCategries', 'subCategries'));
+        } catch (Exception $e) {
+            return view('templates.admin.404');
+        }
+    }
+
+    public function importFile(Request $request){
+
+        try {
+            if (!$request->has('file')) {
+                throw new Exception();                    
+            }
+            
+            DB::transaction(function () use ($request) {
+                Excel::load($request->file, function($reader) {
+
+                    foreach ($reader->toArray() as $row) {
+                        $row['user_id'] = Auth::user()->id;
+
+                        if (!$this->categoryRepository->find($row['category_id'])) {
+                            $category['name'] = $row['name'];
+                            $category['parent_id'] = config('setting.num0');
+                            $category = $this->categoryRepository->create($category);
+                            $row['category_id'] = $category->id;
+                        }
+
+                        $this->productRepository->create($row);
+                    }
+                });
+            });
+
+            return redirect()->route('admin.product.index')->with('success', trans('lang.addSuccess'));
+        } catch (Exception $e) {
+            return redirect()->route('admin.product.index')->with('error', trans('lang.addError'));
+        }    
+
+    } 
 }

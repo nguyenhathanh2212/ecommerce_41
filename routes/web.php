@@ -86,7 +86,7 @@ Route::namespace('Ecommerce')->group(function () {
     });
 });
 
-Route::namespace('Admin')->prefix('admin')->group(function () {
+Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function () {
     Route::resource('product', 'ProductController', [
         'as' => 'admin',
     ]);
@@ -105,5 +105,13 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::post('product/delete',[
         'as' => 'admin.product.delete',
         'uses' => 'ProductController@delete',
+    ]);
+    Route::get('importfile',[
+        'as' => 'admin.product.importfile',
+        'uses' => 'ProductController@createImportFile',
+    ]);
+    Route::post('importfile',[
+        'as' => 'admin.product.importfile',
+        'uses' => 'ProductController@importFile',
     ]);
 });
