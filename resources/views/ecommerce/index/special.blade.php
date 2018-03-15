@@ -15,7 +15,7 @@
                                         <div class="icon-sale-label sale-left">@lang('lang.sale')</div>
                                             <div class="icon-new-label new-right">@lang('lang.new')</div>
                                             <div class="pr-img-area"> <a title="" href="{{ route('ecommerce.product.show', [$specialProduct->id]) }}">
-                                                <figure> {{ Html::image(asset($specialProduct->pictures->first()->picture), '', ['class' => 'first-img', 'height' => '280em']) }} {{ Html::image(asset($specialProduct->pictures->first()->picture), '', ['class' => 'hover-img', 'height' => '280em']) }}</figure>
+                                                <figure> {{ Html::image(asset($specialProduct->first_picture), '', ['class' => 'first-img', 'height' => '280em']) }} {{ Html::image(asset($specialProduct->first_picture), '', ['class' => 'hover-img', 'height' => '280em']) }}</figure>
                                             </a>
                                             <button type="button" class="add-to-cart-mt" id="{{ $specialProduct->id }}"> <i class="fa fa-shopping-cart"></i><span> @lang('lang.addToCart')</span> </button>
                                         </div>

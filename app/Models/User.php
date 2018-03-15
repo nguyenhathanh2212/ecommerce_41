@@ -26,6 +26,7 @@ class User extends Authenticatable
         'delivery_address',
         'provider',
         'provider_id',
+        'check_information',
     ];
 
     /**
@@ -63,4 +64,14 @@ class User extends Authenticatable
     {
         return $this->firstname . ' ' . $this->lastname;
     }
+
+    public function getCheckInformationAttribute()
+    {
+        if ($this->fullname && $this->numberphone && $this->delivery_address) {
+            return config('setting.true');
+        }
+
+        return config('setting.false');
+    }
+
 }

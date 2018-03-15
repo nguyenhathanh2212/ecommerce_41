@@ -22,7 +22,7 @@ class Product extends Model
         'rate',
         'customPrice',
         'specialPrice',
-        'reviews',
+        'first_picture',
         'numberPrice',
     ];
 
@@ -84,8 +84,12 @@ class Product extends Model
         return number_format($this->price - ($this->price * $this->discount_percent) / 100, 0, '.', ',');
     }
 
-    public function getReviewsAttribute()
+    public function getFirstPictureAttribute()
     {
-        return $this;
+        if ($this->pictures()->count()) {
+            return $this->pictures->first()->picture;
+        }
+
+        return config('setting.product_picture_default');
     }
 }

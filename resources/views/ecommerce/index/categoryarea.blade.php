@@ -8,7 +8,7 @@
                         @foreach ($topRates as $topRate)
                             <div class="jtv-product jtv-cat-margin">
                                 <div class="product-img">
-                                    {!! html_entity_decode(Html::link(route('ecommerce.product.show', [$topRate->id]), Html::image($topRate->pictures->first()->picture), '', ['class' => 'secondary-img'])) !!}
+                                    {!! html_entity_decode(Html::link(route('ecommerce.product.show', [$topRate->id]), Html::image($topRate->first_picture), '', ['class' => 'secondary-img'])) !!}
                                 </div>
                                 <div class="jtv-product-content">
                                     <h3>{{ Html::link(route('ecommerce.product.show', [$topRate->id]), ucwords($topRate->name)) }}</h3>
@@ -50,7 +50,7 @@
                         @foreach ($onSales as $onSale)
                             <div class="jtv-product jtv-cat-margin">
                                 <div class="product-img">
-                                    {!! html_entity_decode(Html::link(route('ecommerce.product.show', [$onSale->id]), Html::image($onSale->pictures->first()->picture), '', ['class' => 'secondary-img'])) !!}
+                                    {!! html_entity_decode(Html::link(route('ecommerce.product.show', [$onSale->id]), Html::image($onSale->first_picture), '', ['class' => 'secondary-img'])) !!}
                                 </div>
                                 <div class="jtv-product-content">
                                     <h3>{{ Html::link(route('ecommerce.product.show', [$onSale->id]), ucwords($onSale->name)) }}</h3>

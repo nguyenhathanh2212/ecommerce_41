@@ -9,6 +9,10 @@
                                 {{ Html::image(asset($picture->picture), '', ['width' => '300m', 'height' => '300em']) }}
                             </li>
                         @endforeach
+                    @else
+                        <li data-thumb="{{ asset($product->first_picture) }}">
+                            {{ Html::image(asset($product->first_picture), '', ['width' => '300m', 'height' => '300em']) }}
+                        </li>
                     @endif
                 </ul>
             </div>

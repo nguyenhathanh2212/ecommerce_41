@@ -24,7 +24,7 @@
                                                                 <div class="icon-new-label new-right">@lang('lang.new')</div>
                                                                 <div class="pr-img-area">
                                                                     <a title="" href="{{ route('ecommerce.product.show', [$feature->id]) }}">
-                                                                        <figure> {{ Html::image(asset($feature->pictures->first()->picture), '', ['class' => 'first-img', 'height' => '280em']) }} {{ Html::image(asset($feature->pictures->first()->picture), '', ['class' => 'hover-img', 'height' => '280em']) }}</figure>
+                                                                        <figure> {{ Html::image(asset($feature->first_picture), '', ['class' => 'first-img', 'height' => '280em']) }} {{ Html::image(asset($feature->first_picture), '', ['class' => 'hover-img', 'height' => '280em']) }}</figure>
                                                                     </a>
                                                                     <button type="button" class="add-to-cart-mt" id={{ $feature->id }}>
                                                                         <i class="fa fa-shopping-cart"></i>
@@ -100,7 +100,7 @@
                                                                 <div class="icon-new-label new-right">@lang('lang.new')</div>
                                                                 <div class="pr-img-area">
                                                                     <a title="" href="{{ route('ecommerce.product.show', [$topSell->id]) }}">
-                                                                        <figure> {{ Html::image(asset($topSell->pictures->first()->picture), '', ['class' => 'first-img', 'height' => '280em']) }} {{ Html::image(asset($topSell->pictures->first()->picture), '', ['class' => 'hover-img', 'height' => '280em']) }}</figure>
+                                                                        <figure> {{ Html::image(asset($topSell->first_picture), '', ['class' => 'first-img', 'height' => '280em']) }} {{ Html::image(asset($topSell->first_picture), '', ['class' => 'hover-img', 'height' => '280em']) }}</figure>
                                                                     </a>
                                                                     <button type="button" class="add-to-cart-mt" id="{{ $topSell->id }}"> <i class="fa fa-shopping-cart"></i><span> @lang('lang.addToCart')</span>
                                                                     </button>
@@ -174,7 +174,7 @@
                                     <div class="product-thumbnail">
                                         <div class="icon-hot-label hot-right">@lang('lang.hot')</div>
                                         <div class="pr-img-area"> <a title="" href="">
-                                            <figure> {{ Html::image(asset($hotDeal->pictures->first()->picture), '', ['class' => 'first-img', 'height' => '280em']) }} {{ Html::image(asset($hotDeal->pictures->first()->picture), '', ['class' => 'hover-img', 'height' => '280em']) }}</figure></figure></a>
+                                            <figure> {{ Html::image(asset($hotDeal->first_picture), '', ['class' => 'first-img', 'height' => '280em']) }} {{ Html::image(asset($hotDeal->first_picture), '', ['class' => 'hover-img', 'height' => '280em']) }}</figure></figure></a>
                                             <button type="button" class="add-to-cart-mt" id={{ $hotDeal->id }}>
                                                 <i class="fa fa-shopping-cart"></i><span>@lang('lang.addToCart')</span>
                                             </button>
