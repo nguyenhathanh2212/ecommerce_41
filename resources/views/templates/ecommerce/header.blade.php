@@ -55,7 +55,12 @@
                             <div class="headerlinkmenu col-lg-8 col-md-7 col-sm-8 col-xs-12">
                                 <div class="links">
                                     @auth
-                                        <div class="myaccount"><a title="@lang('lang.myaccount')" href=""><i class="fa fa-user"></i><span class="hidden-xs">{{ Auth::user()->firstname ? Auth::user()->firstname : Auth::user()->email }}</span></a></div>
+                                        <div class="myaccount">
+                                            <a title="@lang('lang.myaccount')" href="{{ route('ecommerce.profile.index') }}">
+                                                <i class="fa fa-user"></i>
+                                                <span class="hidden-xs">{{ Auth::user()->fullname }}</span>
+                                            </a>
+                                        </div>
                                         <div class="login"><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i class="fa fa-unlock-alt"></i><span class="hidden-xs">@lang('lang.logout')</span></a>
                                         </div>

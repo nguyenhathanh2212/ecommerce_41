@@ -76,7 +76,7 @@
                                                     <td class="order-details__product-cell-quantity">
                                                         <span>×</span>
                                                         <span class="order-details__product-quantity__value">
-                                                            {{ $product->pivot->quanlity }}
+                                                            {{ $product->pivot->quantity }}
                                                         </span>
                                                     </td>
                                                     <td class="order-details__product-cell-actions">
