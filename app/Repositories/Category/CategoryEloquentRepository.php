@@ -21,8 +21,20 @@ class CategoryEloquentRepository extends EloquentRepository implements CategoryI
     {
         $category = $this->model->findOrFail($id);
 
+        $orderBy = 'ASC';
+
+        if ($order == 'nameZA') {
+            $order = 'name';
+            $orderBy = 'DESC';
+        }
+
+        if ($order == 'priceHL') {
+            $order = 'price';
+            $orderBy = 'DESC';
+        }
+
         if (count($category->subCategories)) {
-            $products = Product::whereIn('category_id', $category->subCategories()->pluck('id'))->orderBy($order)->paginate($paginate);
+            $products = Product::whereIn('category_id', $category->subCategories()->pluck('id'))->orderBy($order, $orderBy)->paginate($paginate);
         } else {
             $products = $category->products()->orderBy($order)->paginate($paginate);
         }

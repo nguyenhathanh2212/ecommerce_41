@@ -135,4 +135,59 @@ $(document).ready(function() {
             }
         });
     });
+
+    $('.btn-search-user').click(function(event) {
+        var text = $('.search-users').val();
+        $.ajax({
+            url: route('admin.user.paginate'),
+            type: 'POST',
+            data: {
+                text: text,
+            },
+            success: function(data) {
+                $('.content-user').html(data);
+            }
+        });
+    });
+
+    $('.content-user').on('click', '.pagination a',function(event) {
+        event.preventDefault();
+        $('li').removeClass('active');
+        $(this).parent('li').addClass('active');
+        var myurl = $(this).attr('href');
+        var page=$(this).attr('href').split('page=')[1];
+        getData(page);
+    });
+    function getData(page){
+        var text = $('.search-users').val();
+        $.ajax({
+            url: route('admin.user.paginate') +'?page=' + page,
+            type: 'post',
+            data: {
+                text: text,
+            },
+            success: function success(data) {
+                $('.content-user').html(data);
+            }
+        });
+    }
+
+    $('.is_admin_checkbox').click(function(event) {
+        var status = 0;
+        if ($(this).prop('checked') == true){
+            status = 1;
+        }
+        var id = $(this).attr('id');
+        $.ajax({
+            url: route('admin.user.setadmin'),
+            type: 'POST',
+            data: {
+                status: status,
+                id: id,
+            },
+            success: function(data) {
+                location.reload();
+            }
+        });
+    });
 });

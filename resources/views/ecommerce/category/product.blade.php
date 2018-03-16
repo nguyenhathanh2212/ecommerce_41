@@ -16,7 +16,7 @@
             <div class="sorter">
                 <div class="short-by">
                     <label>@lang('lang.sortBy')</label>
-                    {{ Form::select('sort_by',['name' => trans('lang.name'), 'price' => trans('lang.price')], 'name', ['class' => 'sort-by']) }}
+                    {{ Form::select('sort_by',['name' => trans('lang.nameAZ'), 'nameZA' => trans('lang.nameZA'), 'price' => trans('lang.priceLH'), 'priceHL' => trans('lang.priceHL')], 'name', ['class' => 'sort-by']) }}
                 </div>
                 <div class="short-by page">
                     <label>@lang('lang.show')</label>

@@ -105,7 +105,7 @@ Route::namespace('Ecommerce')->group(function () {
     });
 });
 
-Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function () {
+Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::resource('product', 'ProductController', [
         'as' => 'admin',
     ]);
@@ -132,5 +132,20 @@ Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function (
     Route::post('importfile',[
         'as' => 'admin.product.importfile',
         'uses' => 'ProductController@importFile',
+    ]);
+    Route::resource('user', 'UserController', [
+        'as' => 'admin',
+    ]);
+    Route::post('user/paginate',[
+        'as' => 'admin.user.paginate',
+        'uses' => 'UserController@paginate',
+    ]);
+    Route::post('user/setadmin',[
+        'as' => 'admin.user.setadmin',
+        'uses' => 'UserController@setAdmin',
+    ]);
+    Route::get('', [
+        'uses' => 'UserController@index',
+        'as' => 'home.admin',
     ]);
 });
