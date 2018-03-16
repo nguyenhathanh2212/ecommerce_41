@@ -10,6 +10,7 @@ use App\Repositories\Comment\CommentInterface;
 use Exception;
 use Auth;
 use App\Http\Requests\Ecommerce\ReviewRequest;
+use Session;
 
 class ProductController extends Controller
 {
@@ -65,6 +66,15 @@ class ProductController extends Controller
             $relatedProducts = $this->productRepository->getRelatedProducts($product->category_id, $id);
             $reviews = $this->productRepository->getReviews($id);
             $comments = $this->commentRepository->getComments($id);
+
+            $histories = Session::has('histories') ? Session::get('histories') : [];
+            $histories[$product->id] = $product;
+
+            if(count($histories) > config('setting.topSell')) {
+                array_shift($histories);
+            }
+
+            Session::put('histories', $histories);
 
             return view('ecommerce.product.index', compact('product', 'relatedProducts', 'reviews', 'comments'));
         } catch (Exception $e) {

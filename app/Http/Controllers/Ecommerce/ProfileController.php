@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use Exception;
 use App\Repositories\Order\OrderInterface;
+use Session;
 
 class ProfileController extends Controller
 {
@@ -19,7 +20,9 @@ class ProfileController extends Controller
     
     public function index()
     {
-        return view('ecommerce.profile.index');
+        $histories = Session::has('histories') ? Session::get('histories') : [];
+
+        return view('ecommerce.profile.index', compact('histories'));
     }
 
     public function showOrder()

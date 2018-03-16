@@ -15,7 +15,7 @@ class OrdersTableSeeder extends Seeder
             for($index = 0; $index < rand(1, 3); $index++) {
                 $product_id = App\Models\Product::all()->random()->id;
                 $order->products()->attach($product_id, [
-                    'status'=> rand(0, 2),
+                    'quantity'=> rand(0, 10),
                 ]);
             }
         });

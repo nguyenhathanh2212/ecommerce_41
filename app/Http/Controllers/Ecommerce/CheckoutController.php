@@ -83,9 +83,9 @@ class CheckoutController extends Controller
             $data = Session::get('checkoutOrder');
 
             DB::transaction(function () use ($data) {
-                $carts = $this->productRepository->getIdCarts();
+                $idCarts = $this->productRepository->getIdCarts();
                 $order = $this->orderRepository->create($data);
-                $order->products()->attach($carts);
+                $this->orderRepository->createOrderProduct($order->id, $idCarts);
             });
 
             Mail::send(['html'=>'ecommerce.checkout.mail'], $data, function($message) use ($data) {
