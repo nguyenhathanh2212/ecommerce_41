@@ -27,4 +27,16 @@ class OrderEloquentRepository extends EloquentRepository implements OrderInterfa
                 ->attach([$id => ['quantity' => Session::get('carts')[$id]['quanlity']]]);
         }
     }
+
+    public function getByStatus($status)
+    {
+        return $this->model->
+            where('status', $status)->
+            paginate(config('setting.paginate_admin'));
+    }
+
+    public function setStatus($id, $status)
+    {
+        return $this->model->findOrFail($id)->update(['status' => $status]);
+    }
 }

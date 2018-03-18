@@ -56,7 +56,6 @@ $(document).ready(function() {
                 if (data.error) {
                     alert(data.error);
                 } else {
-                    alert('You have successfully added a comment!');
                     $('#' + parent_id).html(data);
                     $('.content-sub-comment-input').val('');
                 }

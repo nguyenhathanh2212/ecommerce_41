@@ -77,9 +77,9 @@ $(document).ready(function() {
         $(this).parent('li').addClass('active');
         var myurl = $(this).attr('href');
         var page=$(this).attr('href').split('page=')[1];
-        getData(page);
+        getDataProduct(page);
     });
-    function getData(page){
+    function getDataProduct(page){
         var mode = $('.view-mode ul li a').attr('class');
         var number = $('.show-by').val();;
         var id = $('.content-product').attr('id');
@@ -105,10 +105,10 @@ $(document).ready(function() {
         $(this).parent('li').addClass('active');
         var myurl = $(this).attr('href');
         var page=$(this).attr('href').split('page=')[1];
-        getData(page);
+        getDataReview(page);
     });
 
-    function getData(page){
+    function getDataReview(page){
         var id = $('.product-review').attr('id');
         $.ajax({
             url: route('ecommerce.product.showreview') +'?page=' + page,
@@ -138,7 +138,6 @@ $(document).ready(function() {
                 if (data.error) {
                     alert(data.error);
                 } else {
-                    alert('You have successfully added a review!');
                     $('.content-show-reviews').html(data);
                 }
             }
@@ -152,10 +151,10 @@ $(document).ready(function() {
         $(this).parent('li').addClass('active');
         var myurl = $(this).attr('href');
         var page=$(this).attr('href').split('page=')[1];
-        getData(page);
+        getDataComment(page);
     });
     
-    function getData(page){
+    function getDataComment(page){
         var id = $('.product-review').attr('id');
         $.ajax({
             url: route('ecommerce.comment.showcomment') +'?page=' + page,
@@ -180,24 +179,70 @@ $(document).ready(function() {
     });
 });
 
-$('.add-cart-detail-product').submit(function(event) {
-    var id = $(this).attr('id');
-    var quanlity = $('.qty-product').val();
-    if (quanlity <= 0) {
-        quanlity = 1;
-    }
-    $.ajax({
-        url: route('ecommerce.cart.addcart'),
-        type: 'post',
-        data: {
-            id: id,
-            quanlity: quanlity,
-        },
-        success: function( data ) {
-            alert('Added to shopping cart.');
-            $('.list-cart').html(data);
+$(document).ready(function() {
+    $('.add-cart-detail-product').submit(function(event) {
+        var id = $(this).attr('id');
+        var quanlity = $('.qty-product').val();
+        if (quanlity <= 0) {
+            quanlity = 1;
         }
-    });
+        $.ajax({
+            url: route('ecommerce.cart.addcart'),
+            type: 'post',
+            data: {
+                id: id,
+                quanlity: quanlity,
+            },
+            success: function( data ) {
+                alert('Added to shopping cart.');
+                $('.list-cart').html(data);
+            }
+        });
 
-    return false;
+        return false;
+    });
+});
+
+$(document).ready(function() {
+    $('.button-search-product').click(function(event) {
+        var text = $('.text-search').val();
+        var categoryId = $('.category-id-search').val();
+
+        $.ajax({
+            url: route('ecommerce.search'),
+            type: 'post',
+            data: {
+                categoryId: categoryId,
+                text: text,
+            },
+            success: function success(data) {
+                $('.content-page-index').html(data);
+            }
+        });
+
+        return false;
+    });
+    $('.content-page-index').on('click', '.pagination a',function(event) {
+        event.preventDefault();
+        $('li').removeClass('active');
+        $(this).parent('li').addClass('active');
+        var myurl = $(this).attr('href');
+        var page=$(this).attr('href').split('page=')[1];
+        getSearch(page);
+    });
+    function getSearch(page){
+        var text = $('.text-search').val();
+        var categoryId = $('.category-id-search').val();
+        $.ajax({
+            url: route('ecommerce.search') +'?page=' + page,
+            type: 'post',
+            data: {
+                categoryId: categoryId,
+                text: text,
+            },
+            success: function success(data) {
+                $('.content-page-index').html(data);
+            }
+        });
+    }
 });

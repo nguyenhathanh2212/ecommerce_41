@@ -69,7 +69,7 @@ class ProductEloquentRepository extends EloquentRepository implements ProductInt
     
     public function getReviews($id)
     {
-        return $this->model->findOrFail($id)->users()->orderBy('created_at', 'DESC')->paginate(config('setting.paginate_review'));
+        return $this->model->findOrFail($id)->users()->orderBy('reviews.created_at', 'DESC')->paginate(config('setting.paginate_review'));
     }
 
     public function addReview($id, $columns = ['*'])
@@ -103,5 +103,14 @@ class ProductEloquentRepository extends EloquentRepository implements ProductInt
         }
         
         return [];
+    }
+
+    public function searchByCategory($request)
+    {
+        return $this->model->
+            where('category_id', $request->category_id)->
+            where('name', 'LIKE', '%' . $request->text_search . '%')->
+            orderBy('created_at', 'DESC')->
+            paginate(config('setting.paginate_admin'));
     }
 }

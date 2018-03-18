@@ -49,7 +49,7 @@
                     <span class="separator">|</span>
                     <a href="#tab-rv">@lang('lang.addYourReview')</a>
                     <span class="separator">|</span>
-                    <span>@lang('lang.quanlity') : {{ $product->quanlity }}</span>
+                    <span>@lang('lang.hasSold') : {{ $product->quanlity }}</span>
                 </p>
                 <p class="availability in-stock pull-right">
                     @lang('lang.availability')<span>@lang('lang.inStock')</span>

@@ -50,7 +50,7 @@
                                                         <div class="order-teaser__product">
                                                             <div class="order-product-teaser">
                                                                 <a class="order-product-teaser__img" href="{{ route('ecommerce.profile.orderdetail', [$order->id]) }}">
-                                                                    {{ Html::image(asset($product->pictures()->first()->picture)) }}    
+                                                                    {{ Html::image(asset($product->first_picture)) }}    
                                                                 </a>
                                                                 <div class="order-product-teaser__body">
                                                                     <a class="order-product-teaser__title" href="{{ route('ecommerce.profile.orderdetail', [$order->id]) }}">{{ ucwords($product->name) }}</a>

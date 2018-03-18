@@ -98,12 +98,12 @@
                         </div>
                         <div class="col-xs-9 col-sm-6 col-md-6"> 
                             <!-- Search -->
-                            
+
                             <div class="top-search">
                                 <div id="search">
-                                    {!! Form::open() !!}
+                                    {!! Form::open(['route' => 'ecommerce.search', 'method' => 'GET']) !!}
                                         <div class="input-group">
-                                            <select class="cate-dropdown hidden-xs" name="category_id">
+                                            <select class="cate-dropdown hidden-xs category-id-search" name="category_id">
                                                 <option value="0">@lang('lang.allCategories')</option>
                                                 @foreach ($parentCategories as $parentCategory)
                                                     <option value="{{ $parentCategory->id }}">{{ ucwords($parentCategory->name) }}</option>
@@ -114,8 +114,8 @@
                                                     @endif
                                                 @endforeach
                                             </select>
-                                            {!! Form::text('search', '', ['class' => 'form-control', 'placeholder' => trans('lang.search')]) !!}
-                                            {!! Form::button('<i class="fa fa-search"></i>', ['class' => 'btn-search']) !!}
+                                            {!! Form::text('search', '', ['class' => 'form-control text-search', 'placeholder' => trans('lang.search'), 'name' => 'text_search']) !!}
+                                            {!! Form::button('<i class="fa fa-search"></i>', ['class' => 'btn-search button-search-product', 'type' => 'submit']) !!}
                                         </div>
                                     {!! Form::close() !!}
                                 </div>

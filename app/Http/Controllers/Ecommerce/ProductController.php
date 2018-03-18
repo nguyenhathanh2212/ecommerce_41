@@ -139,4 +139,18 @@ class ProductController extends Controller
             return trans('lang.error');
         }
     }
+
+    public function search(Request $request)
+    {
+        $text = $request->text_search;
+
+        if ($request->category_id) {
+            $products = $this->productRepository->searchByCategory($request);
+        } else {
+            $products = $this->productRepository->search($text);
+        }
+
+        return view('ecommerce.product.search', compact('products', 'text'));
+
+    }
 }

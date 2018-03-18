@@ -55,9 +55,9 @@ $(document).ready(function() {
         $(this).parent('li').addClass('active');
         var myurl = $(this).attr('href');
         var page=$(this).attr('href').split('page=')[1];
-        getData(page);
+        getDataProduct(page);
     });
-    function getData(page){
+    function getDataProduct(page){
         var text = $('.search-product').val();
         $.ajax({
             url: route('admin.product.paginate') +'?page=' + page,
@@ -97,27 +97,7 @@ $(document).ready(function() {
             }
         });
     });
-    $('.content-product').on('click', '.pagination a',function(event) {
-        event.preventDefault();
-        $('li').removeClass('active');
-        $(this).parent('li').addClass('active');
-        var myurl = $(this).attr('href');
-        var page=$(this).attr('href').split('page=')[1];
-        getData(page);
-    });
-    function getData(page){
-        var text = $('.search-product').val();
-        $.ajax({
-            url: route('admin.product.paginate') +'?page=' + page,
-            type: 'post',
-            data: {
-                text: text,
-            },
-            success: function success(data) {
-                $('.content-product').html(data);
-            }
-        });
-    }
+    
     $('.parent-category').change(function(event) {
         var parentId = $(this).val();
         $.ajax({
@@ -156,9 +136,9 @@ $(document).ready(function() {
         $(this).parent('li').addClass('active');
         var myurl = $(this).attr('href');
         var page=$(this).attr('href').split('page=')[1];
-        getData(page);
+        getDataUser(page);
     });
-    function getData(page){
+    function getDataUser(page){
         var text = $('.search-users').val();
         $.ajax({
             url: route('admin.user.paginate') +'?page=' + page,

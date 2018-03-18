@@ -12,7 +12,7 @@
                         <div class="icon-new-label new-right">@lang('lang.new')</div>
                         <a href="{{ route('ecommerce.product.show', [$product->id]) }}">
                             <figure>
-                                {{ Html::image(asset($product->pictures->first()->picture), '', ['class' => 'small-image', 'height' => '240em']) }}
+                                {{ Html::image(asset($product->first_picture), '', ['class' => 'small-image', 'height' => '240em']) }}
                             </figure>
                         </a>
                     </div>

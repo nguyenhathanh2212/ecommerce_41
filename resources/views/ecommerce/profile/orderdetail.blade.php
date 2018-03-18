@@ -62,7 +62,7 @@
                                                 <tr class="order-details__product-row">
                                                     <td class="order-details__product-cell-img">
                                                         <a href="{{ route('ecommerce.product.show', [$product->id]) }}">
-                                                            {{ Html::image(asset($product->pictures()->first()->picture), '', ['height' => '75px']) }}
+                                                            {{ Html::image(asset($product->first_picture), '', ['height' => '75px']) }}
                                                         </a>
                                                     </td>
                                                     <td class="order-details__product-cell-details">

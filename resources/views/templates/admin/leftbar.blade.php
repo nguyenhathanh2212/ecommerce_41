@@ -19,6 +19,12 @@
                     <span class="text-right"></span>
                 </a>
             </li>
+            <li class="ripple animated fadeInLeft">
+                <a class="nav-header" href="{{ route('admin.order.index') }}">
+                    <span class="fa fa-align-right"></span>{{ strtoupper(trans('lang.order')) }}
+                    <span class="text-right"></span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

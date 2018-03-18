@@ -80,7 +80,7 @@
                                             <tr align="center">
                                                 <td>
                                                     <p>
-                                                        <span><img class="img-product" src="{{ $message->embed(public_path() . '/' .$cart->pictures->first()->picture) }}" />
+                                                        <span><img class="img-product" src="{{ $message->embed(public_path() . '/' .$cart->first_picture) }}" />
                                                         </span>
                                                         <br>
                                                     </p>

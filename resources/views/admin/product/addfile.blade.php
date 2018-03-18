@@ -6,10 +6,10 @@
     </h5>
     @include ('notice.notice')
     <div class="col-sm-offset-1">
-        <h3>@lang('lang.import')</h3>
         {{ Form::open(['route' => 'admin.product.importfile', 'files'=>'true']) }}
+            <span>@lang('lang.import')</span>
             {{ Form::file('file', ['required' => '']) }}
-            <br><hr><br>
+            <br>
             {{ Form::submit(trans('lang.addBtn'), ['class' => 'btn btn-default']) }}
         {{ Form::close() }}
     </div>

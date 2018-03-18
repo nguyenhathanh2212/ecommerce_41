@@ -47,7 +47,7 @@
                         <li class="item">
                             <div class="products-block-left">
                                 <a href="{{ route('ecommerce.product.show', [$specialProduct->id]) }}" title="Sample Product" class="product-image">
-                                    {{ Html::image(asset($specialProduct->pictures->first()->picture)) }}
+                                    {{ Html::image(asset($specialProduct->first_picture)) }}
                                 </a>
                             </div>
                             <div class="products-block-right">

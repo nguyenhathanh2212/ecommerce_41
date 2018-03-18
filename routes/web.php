@@ -103,6 +103,10 @@ Route::namespace('Ecommerce')->group(function () {
             'uses' => 'ProfileController@showOrderDetail',
         ]);
     });
+    Route::post('search', [
+        'as' => 'ecommerce.search',
+        'uses' => 'ProductController@search',
+    ]);
 });
 
 Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'admin'])->group(function () {
@@ -147,5 +151,16 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth', 'admin'])->group
     Route::get('', [
         'uses' => 'UserController@index',
         'as' => 'home.admin',
+    ]);
+    Route::resource('order', 'OrderController', [
+        'as' => 'admin',
+    ]);
+    Route::post('showbystatus', [
+        'as' => 'admin.order.showbystatus',
+        'uses' => 'OrderController@showByStatus',
+    ]);
+    Route::get('changestatus/{id}', [
+        'as' => 'admin.order.changestatus',
+        'uses' => 'OrderController@changeStatus',
     ]);
 });

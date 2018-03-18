@@ -225,4 +225,11 @@ return [
     'users' => 'Users',
     'products' => 'Products',
     'recent' => 'Recent',
+    'itemsFoundBy' => 'items found by',
+    'orderer' => 'Orderer',
+    'name' => 'Name',
+    'status' => 'Status',
+    'delivery' => 'Delivery',
+    'close' => 'Close',
+    'hasSold' => 'Has sold',
 ];
