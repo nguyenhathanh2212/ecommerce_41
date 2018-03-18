@@ -1826,6 +1826,7 @@
                 "xls",
                 "xlxs"
             ],
+            "abandoned": "maatwebsite/excel",
             "time": "2017-11-23T13:22:31+00:00"
         },
         {

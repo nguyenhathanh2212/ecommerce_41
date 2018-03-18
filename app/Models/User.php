@@ -52,7 +52,7 @@ class User extends Authenticatable
     
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'reviews', 'product_id', 'user_id')->withPivot('content', 'rate')->withTimestamps();
+        return $this->belongsToMany(Product::class, 'reviews', 'user_id', 'product_id')->withPivot('content', 'rate')->withTimestamps();
     }
 
     public function setPasswordAttribute($value)

@@ -7,6 +7,18 @@
                 <h1 class="animated fadeInLeft"></h1>
                 <p class="animated fadeInRight"></p>
             </li>
+            <li class="ripple animated fadeInLeft">
+                <a class="nav-header" href="{{ route('admin.user.index') }}">
+                    <span class="fa fa-user"></span>{{ strtoupper(trans('lang.users')) }}
+                    <span class="text-right"></span>
+                </a>
+            </li>
+            <li class="ripple animated fadeInLeft">
+                <a class="nav-header" href="{{ route('admin.product.index') }}">
+                    <span class="fa fa-product-hunt"></span>{{ strtoupper(trans('lang.products')) }}
+                    <span class="text-right"></span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

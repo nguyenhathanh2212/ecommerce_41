@@ -30,22 +30,13 @@
                 </a>
                 <ul class="nav navbar-nav navbar-right user-nav user-login-admin">
                     @auth
-                        <a href="#" class="dropdown-toggle username-menu" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                            <span><img src="{{ Auth::user()->avatar_path }}" class="img-circle avatar"></span>
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                        <strong>{{ ucwords(Auth::user()->fullname) }}</strong>
+                        <a href="{{ route('logout') }}" class="logout-admin" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                            <span class="fa fa-power-off "></span>
                         </a>
-                        <ul class="dropdown-menu user-login-admin-menu">
-                            <li>
-                                <a href="">@lang('lang.my_profile')</a>
-                            </li>
-                            <li>
-                                <a href="" class="logout-admin">
-                                    <span class="fa fa-power-off "></span></a></li>
-                                </a>
-                                {{ Form::open(['route' => 'logout', 'id' => 'logout-form']) }}
-                                {{ Form::close() }}
-                            </li>
-                        </ul>
+                        {{ Form::open(['route' => 'logout', 'id' => 'logout-form']) }}
+                        {{ Form::close() }}
                     @endauth
                 </ul>
             </div>
