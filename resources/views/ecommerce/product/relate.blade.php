@@ -18,8 +18,8 @@
                                                     <div class="icon-new-label new-right">@lang('lang.new')</div>
                                                     <div class="pr-img-area">
                                                         <a href="{{ route('ecommerce.product.show', [$relatedProduct->id]) }}">
-                                                            {{ Html::image(asset($relatedProduct->pictures->first()->picture), '', ['class' => 'first-img', 'height' => '280em']) }}
-                                                            {{ Html::image(asset($relatedProduct->pictures->first()->picture), '', ['class' => 'hover-img', 'height' => '280em']) }}
+                                                            {{ Html::image(asset($relatedProduct->first_picture), '', ['class' => 'first-img', 'height' => '280em']) }}
+                                                            {{ Html::image(asset($relatedProduct->first_picture), '', ['class' => 'hover-img', 'height' => '280em']) }}
                                                         </a>
                                                         <button type="button" class="add-to-cart-mt">   <i class="fa fa-shopping-cart"></i>
                                                             <span> @lang('lang.addToCart')</span>

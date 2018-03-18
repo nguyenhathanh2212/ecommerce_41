@@ -5,7 +5,7 @@
                 <!-- SLIDE 1 -->
                 <li data-transition="slidehorizontal" data-slotamount="5" data-masterspeed="700" > 
                     <!-- MAIN IMAGE -->
-                    {{ Html::image(asset($sliders->first()->pictures->first()->picture), '', ['data-bgfit' => 'cover', 'data-bgposition' => 'center center', 'data-bgrepeat' => 'no-repeat']) }}
+                    {{ Html::image(asset($sliders->first()->first_picture), '', ['data-bgfit' => 'cover', 'data-bgposition' => 'center center', 'data-bgrepeat' => 'no-repeat']) }}
                     <!-- LAYERS --> 
                     <!-- LAYER NR. 1 -->
                     <div class="tp-caption very_big_white skewfromrightshort fadeout"
@@ -51,7 +51,7 @@
                 <!-- SLIDE 2 -->
                 <li data-transition="slidehorizontal" data-slotamount="5" data-masterspeed="700" > 
                 <!-- MAIN IMAGE -->
-                    {{ Html::image(asset($sliders->skip(config('setting.skip1'))->first()->pictures->first()->picture), '', ['data-bgfit' => 'cover', 'data-bgposition' => 'center center', 'data-bgrepeat' => 'no-repeat']) }}
+                    {{ Html::image(asset($sliders->skip(config('setting.skip1'))->first()->first_picture), '', ['data-bgfit' => 'cover', 'data-bgposition' => 'center center', 'data-bgrepeat' => 'no-repeat']) }}
                     <!-- LAYERS --> 
                     <!-- LAYER NR. 1 -->
                     <div class="tp-caption white_heavy_60 customin ltl tp-resizeme"
@@ -108,7 +108,7 @@
                 <!-- SLIDE 3 -->
                 <li data-transition="slidehorizontal" data-slotamount="5" data-masterspeed="700" > 
                 <!-- MAIN IMAGE --> 
-                    {{ Html::image(asset($sliders->skip(config('setting.skip2'))->first()->pictures->first()->picture), '', ['data-bgfit' => 'cover', 'data-bgposition' => 'center center', 'data-bgrepeat' => 'no-repeat']) }}
+                    {{ Html::image(asset($sliders->skip(config('setting.skip2'))->first()->first_picture), '', ['data-bgfit' => 'cover', 'data-bgposition' => 'center center', 'data-bgrepeat' => 'no-repeat']) }}
                     <!-- LAYERS --> 
                     <!-- LAYER NR. 1 -->
                     <div class="tp-caption big_100_white lft start fadeout"

@@ -12,38 +12,36 @@
             </tr>
         </thead>
         <tbody>
-            @if (count($carts))
-                @foreach ($carts as $cart)
-                    <tr>
-                        <td class="cart_product">
-                            <a href="{{ route('ecommerce.product.show', [$cart->id]) }}">
-                                {{ Html::image(asset($cart->pictures->first()->picture)) }}
-                            </a>
-                        </td>
-                        <td class="cart_description">
-                            <p class="product-name">
-                                <a href="{{ route('ecommerce.product.show', [$cart->id]) }}">{{ ucwords($cart->name) }}</a>
-                                <br>
-                                <small>{{ $cart->preview }}</small>
-                            </p>
-                        </td>
-                        <td class="price">
-                            <span>{{ $cart->specialPrice }}</span>
-                        </td>
-                        <td class="qty">
-                            {{ Form::number($cart->id, Session::get('carts')[$cart->id]['quanlity'], ['class' => 'form-control input-sm quanlity-product', 'id' => $cart->id]) }}
-                        </td>
-                        <td class="price">
-                            <span>{{ number_format($cart->numberPrice * Session::get('carts')[$cart->id]['quanlity'], 0, '.', ',') }}</span>
-                        </td>
-                        <td class="action">
-                            <a href="" onclick="return confirm('@lang('lang.areYouSure')')" class="delete-product-cart" id="{{ $cart->id }}"><i class="icon-close"></i></a>
-                        </td>
-                    </tr>
-                @endforeach
-            @else
-                <strong>@lang('lang.cartIsEmpty')</strong>
-            @endif
+            @forelse ($carts as $cart)
+                <tr>
+                    <td class="cart_product">
+                        <a href="{{ route('ecommerce.product.show', [$cart->id]) }}">
+                            {{ Html::image(asset($cart->first_picture)) }}
+                        </a>
+                    </td>
+                    <td class="cart_description">
+                        <p class="product-name">
+                            <a href="{{ route('ecommerce.product.show', [$cart->id]) }}">{{ ucwords($cart->name) }}</a>
+                            <br>
+                            <small>{{ $cart->preview }}</small>
+                        </p>
+                    </td>
+                    <td class="price">
+                        <span>{{ $cart->specialPrice }}</span>
+                    </td>
+                    <td class="qty">
+                        {{ Form::number($cart->id, Session::get('carts')[$cart->id]['quanlity'], ['class' => 'form-control input-sm quanlity-product', 'id' => $cart->id]) }}
+                    </td>
+                    <td class="price">
+                        <span>{{ number_format($cart->numberPrice * Session::get('carts')[$cart->id]['quanlity'], 0, '.', ',') }}</span>
+                    </td>
+                    <td class="action">
+                        <a href="" onclick="return confirm('@lang('lang.areYouSure')')" class="delete-product-cart" id="{{ $cart->id }}"><i class="icon-close"></i></a>
+                    </td>
+                </tr>
+            @empty
+                @lang('lang.cartIsEmpty')
+            @endforelse
         </tbody>
         <tfoot>
             <tr>

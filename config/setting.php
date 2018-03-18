@@ -32,6 +32,7 @@ return [
     'paginate_admin' => 10,
     'fileUpload' => 'templates/ecommerce/images/product/',
     'true' => true,
+    'false' => false,
     'direct' => 'direct',
     'status_default' => 0,
     'fileUpload' => 'templates/ecommerce/images/product/',

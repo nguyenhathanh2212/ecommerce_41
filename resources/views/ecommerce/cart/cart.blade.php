@@ -2,7 +2,7 @@
     @foreach ($carts as $cart)
         <li class="item odd">
             <a href="{{ route('ecommerce.product.show', [$cart->id]) }}" title="" class="product-image">
-                {{ Html::image(asset($cart->pictures->first()->picture), 'html template', ['width' => '65']) }}
+                {{ Html::image(asset($cart->first_picture), 'html template', ['width' => '65']) }}
             </a>
             <div class="product-details">
                 <p class="product-name">
